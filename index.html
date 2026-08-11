@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Jeeva Jee Builders — residential, commercial & interior construction contractors in Tamil Nadu. Trusted planning, transparent pricing, on-time handover.">
+<meta name="keywords" content="Jeeva Jee Builders, construction company Tamil Nadu, building contractor Chennai, residential construction, commercial construction, interior renovation, Jeeva Venkatesan builder">
+<title>Jeeva Jee Builders — Building Plans Into Reality</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Google Fonts: Archivo Black (blueprint/engineering display) + Work Sans (body) + JetBrains Mono (measurements/labels) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --charcoal:      #1c1c1c;
+    --charcoal-2:     #262626;
+    --charcoal-3:     #2f2f2f;
+    --gray:          #4c4c4c;
+    --orange:        #ea6c18;
+    --orange-dark:   #c6560f;
+    --orange-glow:   rgba(234,108,24,0.35);
+    --concrete:      #f3f1ec;
+    --concrete-2:    #eae7df;
+    --ink:           #232221;
+    --text-soft:     rgba(255,255,255,0.68);
+    --text-faint:    rgba(255,255,255,0.42);
+    --border:        rgba(255,255,255,0.09);
+    --border-dark:   rgba(35,34,33,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Work Sans', sans-serif;
+    background: var(--concrete);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 100px 24px; position: relative; }
+
+  h1, h2, h3, h4 { font-family: 'Archivo Black', sans-serif; font-weight: 400; letter-spacing: -0.01em; }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 26px; height: 2px;
+    background: var(--orange);
+    display: inline-block;
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .section-title span { color: var(--orange); }
+  .section-subtitle {
+    color: #5c5a56;
+    font-size: 1.05rem;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 55px;
+  }
+
+  .btn-primary, .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 32px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s ease;
+    font-family: 'Work Sans', sans-serif;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: #fff;
+    box-shadow: 0 8px 24px var(--orange-glow);
+  }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.35);
+  }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* ============ BLUEPRINT GRID BACKDROP ============ */
+  .blueprint-bg {
+    background-color: var(--charcoal);
+    background-image:
+      linear-gradient(rgba(234,108,24,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(234,108,24,0.06) 1px, transparent 1px),
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  }
+
+  /* ============ NAVBAR ============ */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(20,20,20,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo img { height: 52px; width: auto; display: block; }
+  .logo-text {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.05rem;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .logo-text small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .nav-links { display: flex; list-style: none; gap: 34px; align-items: center; }
+  .nav-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.93rem;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange);
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .nav-cta:hover { background: var(--orange-dark); color: #fff !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+  .hamburger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+  @media (max-width: 860px) {
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: rgba(15,15,15,0.98);
+      padding: 24px;
+      gap: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .nav-links.active { display: flex; }
+    .nav-cta { margin-top: 4px; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 140px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-video {
+    position: absolute;
+    top: 50%; left: 50%;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-video-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(90deg, rgba(15,15,15,0.88) 0%, rgba(15,15,15,0.68) 45%, rgba(15,15,15,0.42) 75%, rgba(15,15,15,0.3) 100%),
+      linear-gradient(180deg, rgba(20,20,20,0.55) 0%, rgba(20,20,20,0.25) 30%, rgba(20,20,20,0.4) 68%, rgba(18,18,18,0.94) 88%, rgba(18,18,18,1) 100%);
+    z-index: 1;
+  }
+  .hero-bottom-mask {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 90px;
+    background: linear-gradient(180deg, rgba(18,18,18,0) 0%, var(--charcoal) 55%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 46%; height: 100%;
+    background: linear-gradient(180deg, transparent, rgba(234,108,24,0.10));
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-grid {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-copy { max-width: 680px; }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--orange);
+    border: 1px solid rgba(234,108,24,0.5);
+    background: rgba(15,15,15,0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 3px;
+    margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5.4vw, 4.1rem);
+    line-height: 1.06;
+    color: #fff;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.6);
+  }
+  .hero h1 .accent-underline {
+    position: relative;
+    color: var(--orange);
+    white-space: nowrap;
+  }
+  .hero p.lead {
+    color: rgba(255,255,255,0.88);
+    font-size: 1.12rem;
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 38px;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 50px; }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 34px;
+  }
+  .hero-stat .num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+  }
+  .hero-stat .num span { color: var(--orange); }
+  .hero-stat .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    margin-top: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  }
+
+  /* ============ MARQUEE STRIP ============ */
+  .marquee-strip {
+    background: var(--orange);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-flex;
+    animation: scrollMarquee 26s linear infinite;
+  }
+  .marquee-track span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 0 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .marquee-track span::after { content: '◆'; font-size: 0.6rem; opacity: 0.7; }
+  @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ============ ABOUT ============ */
+  .about-title-row { max-width: 1200px; margin: 0 auto 50px; }
+  .about-title-row h1 {
+    font-size: clamp(2rem, 4.4vw, 3.1rem);
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .about-title-row h1 span { color: var(--orange); }
+
+  .about-wrap {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 60px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Big photo poster panel */
+  .about-visual {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 620px;
+    background-size: cover;
+    background-position: center 15%;
+    box-shadow: 0 24px 50px rgba(28,28,28,0.25);
+  }
+  .av-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(28,28,28,0.55) 0%, rgba(28,28,28,0.15) 30%, rgba(28,28,28,0.35) 60%, rgba(20,20,20,0.92) 100%);
+  }
+  .av-brand {
+    position: absolute; top: 26px; left: 26px; z-index: 2;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .av-logo {
+    width: 34px; height: 34px; border-radius: 6px;
+    background: var(--orange); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+  }
+  .av-brand-text {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.82rem;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .av-brand-text span {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .av-tagline {
+    position: absolute; left: 26px; top: 46%; transform: translateY(-50%); z-index: 2;
+    border-left: 3px solid var(--orange);
+    padding-left: 16px;
+  }
+  .av-tagline-words {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    color: #fff;
+  }
+  .av-tagline-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    margin-top: 8px;
+  }
+  .av-quote {
+    position: absolute; left: 26px; bottom: 140px; z-index: 2;
+    font-family: 'Work Sans', sans-serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--text-soft);
+  }
+  .av-quote em { color: var(--orange); font-style: italic; }
+  .av-icons {
+    position: absolute; left: 26px; right: 26px; bottom: 26px; z-index: 2;
+    display: flex; gap: 22px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 16px;
+  }
+  .av-icon-item { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; max-width: 100px; }
+  .av-icon-item i { color: var(--orange); font-size: 1.05rem; }
+  .av-icon-item span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    line-height: 1.4;
+  }
+  .av-badge {
+    position: absolute; right: -18px; bottom: -18px; z-index: 3;
+    background: var(--orange);
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 26px;
+    box-shadow: 0 16px 34px rgba(234,108,24,0.4);
+    text-align: center;
+  }
+  .av-badge-num { font-family: 'Archivo Black', sans-serif; font-size: 1.9rem; line-height: 1; }
+  .av-badge-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* Right column content */
+  .ac-top-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 34px; }
+  .ac-founder-card, .ac-location-card {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--concrete-2);
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .ac-founder-photo {
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--orange);
+    flex-shrink: 0;
+    transform: scaleX(-1);
+  }
+  .ac-founder-name { font-weight: 700; color: var(--ink); font-size: 0.98rem; }
+  .ac-founder-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--orange-dark);
+    letter-spacing: 0.02em;
+    margin-top: 3px;
+  }
+  .ac-location-ic {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(234,108,24,0.14);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--orange); font-size: 1.05rem;
+  }
+  .ac-location-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--orange-dark);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .ac-location-card p { color: #6a6862; font-size: 0.88rem; line-height: 1.5; }
+
+  .about-content h2.section-title { margin-bottom: 20px; }
+  .about-content .body-p { color: #5c5a56; font-size: 1rem; line-height: 1.8; margin-bottom: 18px; }
+
+  @media (max-width: 900px) {
+    .about-wrap { grid-template-columns: 1fr; gap: 44px; }
+    .about-visual { min-height: 480px; }
+    .av-badge { right: 16px; bottom: -16px; }
+  }
+  @media (max-width: 560px) {
+    .av-tagline-words { font-size: 1.15rem; }
+    .av-quote { display: none; }
+    .av-icons { flex-wrap: wrap; gap: 14px; }
+  }
+
+  /* ============ SERVICES ============ */
+  .services-section { background: var(--charcoal); }
+  .services-section .section-title { color: #fff; }
+  .services-section .section-subtitle { color: var(--text-soft); }
+  .services-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--charcoal-3);
+    border-radius: 14px;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid var(--charcoal-3);
+  }
+
+  /* Flip card mechanics */
+  .service-cell-v2 {
+    position: relative;
+    min-height: 270px;
+    perspective: 1200px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .service-cell-v2:hover .flip-card-inner,
+  .service-cell-v2.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; flex-direction: column;
+  }
+
+  /* Front face */
+  .flip-front {
+    background: #fff;
+    padding: 38px 32px;
+    justify-content: flex-start;
+  }
+  .service-cell-v2 .icon-badge-v2 {
+    width: 50px; height: 50px;
+    border-radius: 12px;
+    background: rgba(234,108,24,0.14);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--orange);
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+    flex-shrink: 0;
+  }
+  .service-cell-v2 h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .service-cell-v2 p { color: #6a6862; line-height: 1.65; font-size: 0.92rem; }
+
+  /* Back face (photo) */
+  .flip-back {
+    transform: rotateY(180deg);
+    background-size: cover;
+    background-position: center;
+    justify-content: flex-end;
+    padding: 26px 28px;
+  }
+  .flip-back::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(28,28,28,0.05) 0%, rgba(28,28,28,0.55) 65%, rgba(28,28,28,0.85) 100%);
+  }
+  .flip-back .flip-back-label {
+    position: relative; z-index: 2;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.98rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: #fff;
+  }
+  .flip-back .flip-back-icon {
+    position: relative; z-index: 2;
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(234,108,24,0.85);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1rem;
+    position: absolute; top: 20px; right: 20px;
+  }
+
+  @media (max-width: 960px) { .services-grid-v2 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .services-grid-v2 { grid-template-columns: 1fr; } .service-cell-v2 { min-height: 240px; } }
+
+  /* ============ PROCESS ============ */
+  .process-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-wrap::before {
+    content: '';
+    position: absolute;
+    top: 27px; left: 6%; right: 6%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--gray) 0 8px, transparent 8px 16px);
+    z-index: 0;
+  }
+  .process-step { position: relative; z-index: 1; padding: 0 18px; text-align: left; }
+  .process-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--concrete);
+    border: 2px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo Black', sans-serif;
+    color: var(--orange);
+    font-size: 1.15rem;
+    margin-bottom: 22px;
+  }
+  .process-step h4 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; font-family: 'Work Sans', sans-serif; }
+  .process-step p { color: #6a6862; font-size: 0.93rem; line-height: 1.65; }
+  @media (max-width: 900px) {
+    .process-wrap { grid-template-columns: 1fr 1fr; gap: 40px 20px; }
+    .process-wrap::before { display: none; }
+  }
+  @media (max-width: 540px) {
+    .process-wrap { grid-template-columns: 1fr; }
+  }
+
+  /* ============ WHY / STATS BAND ============ */
+  .why-section { background: var(--concrete-2); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .why-card { text-align: left; }
+  .why-card .num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2.6rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .why-card .num span { color: var(--orange); }
+  .why-card .lbl { font-weight: 600; margin-bottom: 6px; font-size: 1rem; }
+  .why-card .desc { color: #6a6862; font-size: 0.9rem; line-height: 1.6; }
+  @media (max-width: 780px) {
+    .why-grid { grid-template-columns: 1fr 1fr; gap: 36px 24px; }
+  }
+
+  /* ============ CONTACT ============ */
+  .contact-section { background: var(--charcoal); }
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .contact-section .section-title { color: #fff; }
+  .contact-info-list { display: flex; flex-direction: column; gap: 22px; margin-top: 10px; margin-bottom: 36px; }
+  .contact-info-item { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-info-item .ic {
+    width: 44px; height: 44px;
+    background: rgba(234,108,24,0.14);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--orange);
+    flex-shrink: 0;
+    font-size: 1.05rem;
+  }
+  .contact-info-item .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 4px;
+  }
+  .contact-info-item a, .contact-info-item span.val {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .contact-info-item a:hover { color: var(--orange); }
+  .social-row { display: flex; gap: 12px; }
+  .social-row a {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.25s;
+  }
+  .social-row a:hover { border-color: var(--orange); color: var(--orange); background: rgba(234,108,24,0.08); }
+
+  .contact-form {
+    background: var(--charcoal-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-form .field-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    background: var(--charcoal-3);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 13px 14px;
+    color: #fff;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.25s;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--text-faint); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--orange); }
+  .contact-form select option { background: var(--charcoal-2); }
+  .contact-form button { margin-top: 6px; justify-content: center; width: 100%; }
+
+  @media (max-width: 900px) {
+    .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    background: #141414;
+    padding: 56px 24px 22px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 44px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+  }
+  .footer-brand .logo { margin-bottom: 16px; }
+  .footer-brand p { color: var(--text-faint); font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
+  .footer h4 {
+    color: #fff;
+    margin-bottom: 18px;
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .footer ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .footer a { color: var(--text-soft); text-decoration: none; font-size: 0.92rem; transition: 0.25s; }
+  .footer a:hover { color: var(--orange); }
+  .footer-bottom {
+    text-align: center;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.82rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  @media (max-width: 780px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 34px; }
+  }
+
+  /* ============ FLOATING BUTTONS ============ */
+  .floating-buttons {
+    position: fixed;
+    bottom: 26px; right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+  }
+  .float-btn {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    transition: transform 0.3s;
+  }
+  .float-btn:hover { transform: scale(1.1); }
+  .whatsapp-btn { background: #25d366; animation: pulseWa 2.2s infinite; }
+  .call-btn { background: var(--orange); }
+  @keyframes pulseWa {
+    0%, 100% { box-shadow: 0 4px 18px rgba(0,0,0,0.35); }
+    50% { box-shadow: 0 4px 22px rgba(37,211,102,0.55); }
+  }
+
+  ::selection { background: var(--orange); color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Jeeva Jee Builders logo">
+      <div class="logo-text">Jeeva Jee Builders<small>CONSTRUCTION &amp; INTERIORS</small></div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero blueprint-bg" id="home">
+  <video class="hero-bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://res.cloudinary.com/lfgnusmd/video/upload/v1786428672/Drone_flying_over_large_project_202608111140_itfqd7.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
+  <div class="hero-bottom-mask"></div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="hero-tag"><i class="fas fa-drafting-compass"></i> Chennai &amp; Tamil Nadu</div>
+      <h1 data-aos="fade-up">We Build Your Plans <span class="accent-underline">Into Reality</span></h1>
+      <p class="lead" data-aos="fade-up" data-aos-delay="100">Jeeva Jee Builders delivers residential, commercial and interior construction with honest planning, quality materials and on-site accountability — from the first sketch to the final handover.</p>
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="200">
+        <a href="#contact" class="btn-primary"><i class="fas fa-file-signature"></i> Request a Free Quote</a>
+        <a href="https://wa.me/918973375262?text=Hello%2C%20I%27d%20like%20to%20discuss%20a%20construction%20project" target="_blank" class="btn-outline"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      </div>
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+        <div class="hero-stat">
+          <div class="num">16<span>+</span></div>
+          <div class="lbl">Years Experience</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">100<span>+</span></div>
+          <div class="lbl">Projects</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">100<span>%</span></div>
+          <div class="lbl">Transparent Costing</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">A–Z</div>
+          <div class="lbl">Turnkey Service</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>Architectural Design</span>
+    <span>Construction</span>
+    <span>Interior Design</span>
+    <span>Electrical Systems</span>
+    <span>Plumbing</span>
+    <span>Renovations</span>
+    <span>Consulting</span>
+    <span>Architectural Design</span>
+    <span>Construction</span>
+    <span>Interior Design</span>
+    <span>Electrical Systems</span>
+    <span>Plumbing</span>
+    <span>Renovations</span>
+    <span>Consulting</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section blueprint-bg" id="services">
+  <div class="eyebrow" style="justify-content:center; max-width:1200px; margin-left:auto; margin-right:auto;">What We Do</div>
+  <h2 class="section-title" style="text-align:center; color:#fff; max-width:1200px; margin-left:auto; margin-right:auto;">Services Built Around <span>Your Site</span></h2>
+  <p class="section-subtitle" style="text-align:center; max-width:640px; margin-left:auto; margin-right:auto;">From the foundation to the final coat of paint, we handle every stage under one roof.</p>
+
+  <div class="services-grid-v2" data-aos="fade-up">
+    <div class="service-cell-v2">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="icon-badge-v2"><i class="fas fa-drafting-compass"></i></div>
+          <h3>Architectural Design</h3>
+          <p>Site-specific floor plans and elevations that balance daylight, ventilation and your budget from day one.</p>
+        </div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/dt97offnl/image/upload/v1784691844/architectural-sketching-10-architecture-sketching-tips_trdgiy.webp')">
+          <div class="flip-back-icon"><i class="fas fa-drafting-compass"></i></div>
+          <div class="flip-back-label">Architectural Design</div>
+        </div>
+      </div>
+    </div>
+    <div class="service-cell-v2">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="icon-badge-v2"><i class="fas fa-hard-hat"></i></div>
+          <h3>Construction</h3>
+          <p>Full civil construction from foundation to roof, with disciplined site supervision and quality checks at every stage.</p>
+        </div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1786376666/Gemini_Generated_Image_su5jsosu5jsosu5j_sgnz8e.png')">
+          <div class="flip-back-icon"><i class="fas fa-hard-hat"></i></div>
+          <div class="flip-back-label">Construction</div>
+        </div>
+      </div>
+    </div>
+    <div class="service-cell-v2">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="icon-badge-v2"><i class="fas fa-couch"></i></div>
+          <h3>Interior Design</h3>
+          <p>Concept-to-completion interiors — material selection, layout planning and finishing that fits how you live.</p>
+        </div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1786376859/2025-03-14_12_jj8mu7.webp')">
+          <div class="flip-back-icon"><i class="fas fa-couch"></i></div>
+          <div class="flip-back-label">Interior Design</div>
+        </div>
+      </div>
+    </div>
+    <div class="service-cell-v2">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="icon-badge-v2"><i class="fas fa-bolt"></i></div>
+          <h3>Electrical Systems</h3>
+          <p>Code-compliant wiring and load planning built for homes and commercial spaces alike.</p>
+        </div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/dt97offnl/image/upload/v1784691844/Electrical_System_pyyd81.jpg')">
+          <div class="flip-back-icon"><i class="fas fa-bolt"></i></div>
+          <div class="flip-back-label">Electrical Systems</div>
+        </div>
+      </div>
+    </div>
+    <div class="service-cell-v2">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="icon-badge-v2"><i class="fas fa-faucet"></i></div>
+          <h3>Plumbing</h3>
+          <p>Durable plumbing design and installation built to handle years of daily use with minimal upkeep.</p>
+        </div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/dt97offnl/image/upload/v1784691843/Plumbing_xuyryg.jpg')">
+          <div class="flip-back-icon"><i class="fas fa-faucet"></i></div>
+          <div class="flip-back-label">Plumbing</div>
+        </div>
+      </div>
+    </div>
+    <div class="service-cell-v2">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="icon-badge-v2"><i class="fas fa-paint-roller"></i></div>
+          <h3>Renovations</h3>
+          <p>Restoring ageing structures and interiors without cutting corners on safety or finish quality.</p>
+        </div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1786376981/2025-03-14_5_kembse.webp')">
+          <div class="flip-back-icon"><i class="fas fa-paint-roller"></i></div>
+          <div class="flip-back-label">Renovations</div>
+        </div>
+      </div>
+    </div>
+    <div class="service-cell-v2">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="icon-badge-v2"><i class="fas fa-comments"></i></div>
+          <h3>Consulting</h3>
+          <p>Straight-talk guidance on approvals, budgeting and execution strategy before you commit to build.</p>
+        </div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/dt97offnl/image/upload/v1784691843/Consulting_fcpjaa.jpg')">
+          <div class="flip-back-icon"><i class="fas fa-comments"></i></div>
+          <div class="flip-back-label">Consulting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-title-row">
+    <h1>About <span>Jeeva Jee</span> Builders</h1>
+  </div>
+
+  <div class="about-wrap">
+    <div class="about-visual" data-aos="fade-right" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1786377393/WhatsApp_Image_2026-08-06_at_5.38.43_PM_nsmjsr.jpg')">
+      <div class="av-overlay"></div>
+      <div class="av-brand">
+        <div class="av-logo"><i class="fas fa-drafting-compass"></i></div>
+        <div class="av-brand-text">JEEVA JEE<span>BUILDERS</span></div>
+      </div>
+      <div class="av-tagline">
+        <div class="av-tagline-words">PLANNING.<br>QUALITY.<br>TRUST.</div>
+        <div class="av-tagline-sub">WE BUILD WHAT WE PROMISE</div>
+      </div>
+      <div class="av-quote">Built on Trust,<br><em>Driven by Craft.</em></div>
+      <div class="av-icons">
+        <div class="av-icon-item"><i class="fas fa-drafting-compass"></i><span>Quality Construction</span></div>
+        <div class="av-icon-item"><i class="fas fa-shield-halved"></i><span>Trust &amp; Integrity</span></div>
+        <div class="av-icon-item"><i class="fas fa-truck-fast"></i><span>On-Time Delivery</span></div>
+      </div>
+      <div class="av-badge">
+        <div class="av-badge-num">16+</div>
+        <div class="av-badge-lbl">Years Experience</div>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <div class="ac-top-cards">
+        <div class="ac-founder-card" data-aos="fade-up">
+          <img class="ac-founder-photo" src="https://res.cloudinary.com/lfgnusmd/image/upload/v1786377393/WhatsApp_Image_2026-08-06_at_5.38.43_PM_nsmjsr.jpg" alt="Jeeva Venkatesan, Founder of Jeeva Jee Builders" loading="lazy">
+          <div>
+            <div class="ac-founder-name">Jeeva Venkatesan</div>
+            <div class="ac-founder-role">FOUNDER, JEEVA JEE BUILDERS</div>
+          </div>
+        </div>
+        <div class="ac-location-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="ac-location-ic"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="ac-location-title">Across Tamil Nadu</div>
+            <p>We take up residential, commercial and interior projects across Chennai and every major district in Tamil Nadu.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Building Trust, <span>Brick by Brick</span></h2>
+      <p class="body-p">Jeeva Jee Builders is a Tamil Nadu–based construction company handling everything from independent homes to commercial spaces and interior renovations — managed directly, site to site, by the founder himself.</p>
+      <p class="body-p">Every project starts with a plan we can stand behind — the right materials, a realistic timeline, and pricing you understand before a single wall goes up. From foundation to final coat, we oversee every stage with itemised quotes and honest updates, so you always know where your budget is going.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="eyebrow" style="justify-content:center; max-width:1200px; margin-left:auto; margin-right:auto;">How We Work</div>
+  <h2 class="section-title" style="text-align:center; max-width:1200px; margin-left:auto; margin-right:auto;">From First Call to <span>Handover Keys</span></h2>
+  <p class="section-subtitle" style="text-align:center; max-width:600px; margin-left:auto; margin-right:auto;">A straightforward process, followed the same way on every project.</p>
+
+  <div class="process-wrap">
+    <div class="process-step" data-aos="fade-up">
+      <div class="process-num">01</div>
+      <h4>Consultation</h4>
+      <p>We visit your site, understand your requirement and budget, and discuss options.</p>
+    </div>
+    <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+      <div class="process-num">02</div>
+      <h4>Design &amp; Estimate</h4>
+      <p>Layout, material selection and an itemised cost estimate for your approval.</p>
+    </div>
+    <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+      <div class="process-num">03</div>
+      <h4>Construction</h4>
+      <p>Work begins with regular site updates and quality checks at every stage.</p>
+    </div>
+    <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+      <div class="process-num">04</div>
+      <h4>Handover</h4>
+      <p>Final walkthrough, snag fixes, and the keys handed over — on schedule.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY / STATS -->
+<section class="why-section">
+  <div class="why-grid">
+    <div class="why-card" data-aos="fade-up">
+      <div class="num">16<span>+</span></div>
+      <div class="lbl">Years of Experience</div>
+      <div class="desc">Steady, hands-on work across residential and commercial sites.</div>
+    </div>
+    <div class="why-card" data-aos="fade-up" data-aos-delay="80">
+      <div class="num"><span>#</span>1</div>
+      <div class="lbl">Point of Contact</div>
+      <div class="desc">One builder accountable for the whole project, start to finish.</div>
+    </div>
+    <div class="why-card" data-aos="fade-up" data-aos-delay="160">
+      <div class="num">100<span>%</span></div>
+      <div class="lbl">Itemised Quotes</div>
+      <div class="desc">No hidden costs — every quote is broken down before work begins.</div>
+    </div>
+    <div class="why-card" data-aos="fade-up" data-aos-delay="240">
+      <div class="num">24<span>/7</span></div>
+      <div class="lbl">Site Reachability</div>
+      <div class="desc">Call or WhatsApp Jeeva directly for any site query, anytime.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section blueprint-bg" id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="eyebrow">Get In Touch</div>
+      <h2 class="section-title" style="color:#fff;">Let's Plan Your <span>Next Build</span></h2>
+      <p class="section-subtitle" style="color:var(--text-soft); margin-bottom:30px;">Tell us about your site and requirement — we'll get back with a clear estimate.</p>
+
+      <div class="contact-info-list">
+        <div class="contact-info-item">
+          <div class="ic"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="lbl">Call Us</div>
+            <a href="tel:+918973375262">+91 89733 75262</a> &nbsp;/&nbsp; <a href="tel:+918248061976">+91 82480 61976</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ic"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <div class="lbl">WhatsApp</div>
+            <a href="https://wa.me/918973375262" target="_blank">+91 89733 75262</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ic"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="lbl">Location</div>
+            <span class="val">Tamil Nadu, India</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <a href="https://www.instagram.com/jeevajeebuilders?igsh=Mms2dWF3NW8xdG51" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1DifZhxp4t/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://share.google/N3vY2mmApaT6yw8io" target="_blank" title="Google Business Profile"><i class="fas fa-map-marked-alt"></i></a>
+        <a href="https://wa.me/918973375262" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <div class="contact-form" data-aos="fade-up">
+      <div>
+        <span class="field-label">Your Name</span>
+        <input type="text" id="enquiryName" placeholder="Enter your name" required>
+      </div>
+      <div>
+        <span class="field-label">Phone Number</span>
+        <input type="tel" id="enquiryPhone" placeholder="Enter your phone number" required>
+      </div>
+      <div>
+        <span class="field-label">Service Needed</span>
+        <select id="enquiryService">
+          <option value="">Select a service</option>
+          <option>Architectural Design</option>
+          <option>Construction</option>
+          <option>Interior Design</option>
+          <option>Electrical Systems</option>
+          <option>Plumbing</option>
+          <option>Renovations</option>
+          <option>Consulting</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <span class="field-label">Message</span>
+        <textarea id="enquiryMsg" placeholder="Tell us about your site and requirement" rows="4"></textarea>
+      </div>
+      <button onclick="sendEnquiry()" class="btn-primary">
+        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="assets/logo.png" alt="Jeeva Jee Builders logo" style="height:48px;">
+      </div>
+      <p>Residential, commercial and interior construction across Tamil Nadu — planned properly, built honestly.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+918973375262"><i class="fas fa-phone"></i>&nbsp; +91 89733 75262</a></li>
+        <li><a href="tel:+918248061976"><i class="fas fa-phone"></i>&nbsp; +91 82480 61976</a></li>
+        <li><a href="https://wa.me/918973375262" target="_blank"><i class="fab fa-whatsapp"></i>&nbsp; WhatsApp Us</a></li>
+        <li><a href="https://www.instagram.com/jeevajeebuilders?igsh=Mms2dWF3NW8xdG51" target="_blank"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
+        <li><a href="https://www.facebook.com/share/1DifZhxp4t/" target="_blank"><i class="fab fa-facebook-f"></i>&nbsp; Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Jeeva Jee Builders. All rights reserved. | Site by Mahesh Kumar</p>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating-buttons">
+  <a href="https://wa.me/918973375262?text=Hello%2C%20I%20need%20your%20construction%20service" class="float-btn whatsapp-btn" target="_blank" title="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="tel:+918973375262" class="float-btn call-btn" title="Call Now">
+    <i class="fas fa-phone"></i>
+  </a>
+</div>
+
+<!-- AOS + Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 800, once: true });
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+    });
+  });
+
+  // Tap-to-flip for touch devices (hover doesn't apply on mobile)
+  document.querySelectorAll('.service-cell-v2').forEach(cell => {
+    cell.addEventListener('click', () => {
+      if (window.matchMedia('(hover: none)').matches) {
+        document.querySelectorAll('.service-cell-v2.flipped').forEach(c => {
+          if (c !== cell) c.classList.remove('flipped');
+        });
+        cell.classList.toggle('flipped');
+      }
+    });
+  });
+
+  function sendEnquiry() {
+    const name = document.getElementById('enquiryName').value.trim();
+    const phone = document.getElementById('enquiryPhone').value.trim();
+    const service = document.getElementById('enquiryService').value;
+    const msg = document.getElementById('enquiryMsg').value.trim();
+    if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
+    const text = `Hello! I'm interested in Jeeva Jee Builders' services.\n\nName: ${name}\nPhone: ${phone}\nService: ${service || 'General Enquiry'}\nMessage: ${msg || 'Please contact me.'}`;
+    window.open(`https://wa.me/918973375262?text=${encodeURIComponent(text)}`, '_blank');
+  }
+</script>
+</body>
+</html>
