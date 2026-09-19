@@ -1010,9 +1010,7 @@
 
 <!-- HERO -->
 <section class="hero blueprint-bg" id="home">
-  <video class="hero-bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="https://res.cloudinary.com/lfgnusmd/video/upload/q_auto:best,f_auto/v1789819406/End_video_before_drone_camera_20260919172956_processed_v58fpf.mp4" type="video/mp4">
-  </video>
+  <img class="hero-bg-video" src="https://res.cloudinary.com/lfgnusmd/image/upload/v1786433690/2025-03-14_1_uf9dxp.webp" alt="" loading="eager">
   <div class="hero-video-overlay"></div>
   <div class="hero-bottom-mask"></div>
   <div class="hero-grid">
@@ -1023,7 +1021,7 @@
       </div>
       <h1 data-aos="fade-up">You Dream, <span class="accent-underline">We Build.</span></h1>
       <div class="hero-subline" data-aos="fade-up" data-aos-delay="60">Architecture &middot; Construction &middot; Interior Design &middot; Turnkey Solutions</div>
-      <p class="lead" data-aos="fade-up" data-aos-delay="100">Jeeva Jee Builders is a modern powerhouse in architecture, construction, and interiors — shaping spaces that embody strength, functionality, and timeless elegance. From blueprint to completion, every project is handled with quality craftsmanship and reliable execution.</p>
+      <p class="lead" data-aos="fade-up" data-aos-delay="100">Architecture, construction, and interiors — built with strength, function, and timeless elegance. Blueprint to completion, backed by quality craftsmanship.</p>
       <div class="hero-actions" data-aos="fade-up" data-aos-delay="200">
         <a href="#contact" class="btn-primary"><i class="fas fa-file-signature"></i> Request a Free Quote</a>
         <a href="packages.html" class="btn-package">
@@ -1472,14 +1470,6 @@
 <script>
   if (typeof AOS !== 'undefined') {
     AOS.init({ duration: 800, once: true });
-  }
-
-  // Hero background video — slowed slightly for a premium, cinematic feel
-  const heroVideo = document.querySelector('.hero-bg-video');
-  if (heroVideo) {
-    const setSlowPlayback = () => { heroVideo.playbackRate = 0.75; };
-    heroVideo.addEventListener('loadedmetadata', setSlowPlayback);
-    setSlowPlayback();
   }
 
   // Roadmap (Process section) — animate each row's connecting line in as it scrolls into view
