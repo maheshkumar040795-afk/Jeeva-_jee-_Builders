@@ -8,7 +8,7 @@
 <title>Our Projects | Jeeva Jee Builders</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
@@ -32,10 +32,10 @@
   }
 
   html { scroll-behavior: smooth; }
-  body { font-family: 'Work Sans', sans-serif; background: var(--concrete); color: var(--ink); overflow-x: hidden; }
+  body { font-family: 'Inter', sans-serif; background: var(--concrete); color: var(--ink); overflow-x: hidden; }
   .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
   section { padding: 90px 24px; position: relative; }
-  h1, h2, h3, h4 { font-family: 'Archivo Black', sans-serif; font-weight: 400; letter-spacing: -0.01em; }
+  h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; font-weight: 700; letter-spacing: -0.01em; }
 
   .eyebrow {
     font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -49,7 +49,7 @@
   .btn-primary, .btn-outline {
     display: inline-flex; align-items: center; gap: 10px; padding: 15px 32px;
     border-radius: 3px; font-weight: 600; font-size: 0.95rem; text-decoration: none;
-    cursor: pointer; border: none; transition: all 0.25s ease; font-family: 'Work Sans', sans-serif;
+    cursor: pointer; border: none; transition: all 0.25s ease; font-family: 'Inter', sans-serif;
   }
   .btn-primary { background: var(--orange); color: #fff; box-shadow: 0 8px 24px var(--orange-glow); }
   .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
@@ -65,32 +65,56 @@
   }
 
   /* NAVBAR */
-  .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(20,20,20,0.92); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid var(--border); }
+  .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(243,241,236,0.96); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid var(--border-dark); box-shadow: 0 2px 16px rgba(35,34,33,0.06); }
   .nav-container { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; }
   .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
   .logo img { height: 52px; width: auto; display: block; }
-  .logo-text { font-family: 'Archivo Black', sans-serif; font-size: 1.05rem; color: #fff; line-height: 1.2; }
+  .logo-text { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--ink); line-height: 1.2; }
   .logo-text small { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--orange); font-weight: 500; margin-top: 2px; }
   .nav-links { display: flex; list-style: none; gap: 30px; align-items: center; }
-  .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.3s; }
+  .nav-links a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.3s; }
   .nav-links a:hover, .nav-links a.active { color: var(--orange); }
   .nav-cta { background: var(--orange); color: #fff !important; padding: 10px 22px; border-radius: 3px; font-weight: 600; }
   .nav-cta:hover { background: var(--orange-dark); color: #fff !important; }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
-  .hamburger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
+  .hamburger span { width: 25px; height: 2px; background: var(--ink); transition: 0.3s; }
   .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
   .hamburger.active span:nth-child(2) { opacity: 0; }
   .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
   @media (max-width: 960px) {
     .hamburger { display: flex; }
-    .nav-links { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15,15,15,0.98); padding: 24px; gap: 18px; border-top: 1px solid var(--border); }
+    .nav-links { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: rgba(243,241,236,0.98); padding: 24px; gap: 18px; border-top: 1px solid var(--border-dark); }
     .nav-links.active { display: flex; }
     .nav-cta { margin-top: 4px; }
   }
 
   /* PAGE BANNER */
-  .page-banner { padding: 150px 24px 70px; text-align: left; }
-  .page-banner .container { max-width: 760px; }
+  .page-banner { padding: 150px 24px 70px; text-align: left; position: relative; overflow: hidden; }
+  .page-banner .container { max-width: 760px; position: relative; z-index: 1; }
+  .page-banner-badge {
+    position: absolute;
+    right: 40px; top: 50%;
+    transform: translateY(-50%);
+    width: 190px; height: 190px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    z-index: 0;
+  }
+  .page-banner-badge img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+  @media (max-width: 900px) {
+    .page-banner-badge { width: 140px; height: 140px; right: 24px; }
+  }
+  @media (max-width: 700px) {
+    .page-banner-badge { display: none; }
+  }
   .page-banner h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); color: #fff; line-height: 1.1; margin-bottom: 18px; }
   .page-banner h1 span { color: var(--orange); }
   .page-banner p { color: var(--text-soft); font-size: 1.02rem; max-width: 620px; margin-bottom: 20px; line-height: 1.75; }
@@ -155,7 +179,7 @@
   .footer { background: #141414; padding: 60px 24px 24px; }
   .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 50px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
   .footer-brand p { color: var(--text-faint); font-size: 0.9rem; line-height: 1.7; margin-top: 16px; max-width: 300px; }
-  .footer h4 { color: #fff; font-family: 'Work Sans', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 18px; }
+  .footer h4 { color: #fff; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 18px; }
   .footer ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
   .footer a { color: var(--text-faint); text-decoration: none; font-size: 0.9rem; transition: color 0.25s; }
   .footer a:hover { color: var(--orange); }
@@ -193,6 +217,7 @@
 </nav>
 
 <header class="page-banner blueprint-bg">
+  <div class="page-banner-badge"><img src="assets/logo.png" alt="Jeeva Jee Builders logo"></div>
   <div class="container">
     <div class="breadcrumb" style="margin-bottom:18px;"><a href="index.html">Home</a> / Projects</div>
     <div class="eyebrow"><i class="fas fa-images"></i> Our Work</div>
@@ -240,7 +265,7 @@
       <div class="eyebrow">Category 03</div>
       <h2 class="section-title">Elevation <span>Design</span></h2>
     </div>
-    <div class="gallery-count">5 PROJECTS</div>
+    <div class="gallery-count">8 PROJECTS</div>
   </div>
   <div class="proj-grid" id="grid-elevation"></div>
 </section>
@@ -279,7 +304,6 @@
       <h4>Contact</h4>
       <ul>
         <li><a href="tel:+918973375262"><i class="fas fa-phone"></i>&nbsp; +91 89733 75262</a></li>
-        <li><a href="tel:+918248061976"><i class="fas fa-phone"></i>&nbsp; +91 82480 61976</a></li>
         <li><a href="https://wa.me/918973375262" target="_blank"><i class="fab fa-whatsapp"></i>&nbsp; WhatsApp Us</a></li>
         <li><a href="https://www.instagram.com/jeevajeebuilders?igsh=Mms2dWF3NW8xdG51" target="_blank"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
         <li><a href="https://www.facebook.com/share/1DifZhxp4t/" target="_blank"><i class="fab fa-facebook-f"></i>&nbsp; Facebook</a></li>
@@ -366,13 +390,16 @@
       ]
     },
     {
-      id: 'elevation', label: 'Elevation Design', count: 5,
+      id: 'elevation', label: 'Elevation Design', count: 8,
       photos: [
         'https://res.cloudinary.com/lfgnusmd/image/upload/v1786433692/3D_Elevation_2_n6ekqj.jpg',
         'https://res.cloudinary.com/lfgnusmd/image/upload/v1786433691/2025-03-14_2_nvfnig.webp',
         'https://res.cloudinary.com/lfgnusmd/image/upload/v1786433691/3D_Elevation_1_gkpovs.jpg',
         'https://res.cloudinary.com/lfgnusmd/image/upload/v1786433691/2025-03-14_vxmaxx.webp',
-        'https://res.cloudinary.com/lfgnusmd/image/upload/v1786433690/2025-03-14_1_uf9dxp.webp'
+        'https://res.cloudinary.com/lfgnusmd/image/upload/v1786433690/2025-03-14_1_uf9dxp.webp',
+        'https://res.cloudinary.com/lfgnusmd/image/upload/v1789748223/Screenshot_2026-09-18_214516_jttvxx.png',
+        'https://res.cloudinary.com/lfgnusmd/image/upload/v1789748223/Screenshot_2026-09-18_214537_hz0mqw.png',
+        'https://res.cloudinary.com/lfgnusmd/image/upload/v1789748222/Screenshot_2026-09-18_214547_uakoml.png'
       ]
     }
   ];

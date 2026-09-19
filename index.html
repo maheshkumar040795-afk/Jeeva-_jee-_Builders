@@ -9,9 +9,9 @@
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- Google Fonts: Archivo Black (blueprint/engineering display) + Work Sans (body) + JetBrains Mono (measurements/labels) -->
+<!-- Google Fonts: Poppins (headings/display) + Inter (body) + JetBrains Mono (measurements/labels) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- AOS -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -38,7 +38,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     background: var(--concrete);
     color: var(--ink);
     overflow-x: hidden;
@@ -47,7 +47,7 @@
   .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
   section { padding: 100px 24px; position: relative; }
 
-  h1, h2, h3, h4 { font-family: 'Archivo Black', sans-serif; font-weight: 400; letter-spacing: -0.01em; }
+  h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; font-weight: 700; letter-spacing: -0.01em; }
 
   .eyebrow {
     font-family: 'JetBrains Mono', monospace;
@@ -94,7 +94,7 @@
     cursor: pointer;
     border: none;
     transition: all 0.25s ease;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   .btn-primary {
     background: var(--orange);
@@ -108,6 +108,56 @@
     border: 1.5px solid rgba(255,255,255,0.35);
   }
   .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* Attractive rotating "Packages" CTA — replaces WhatsApp button in hero */
+  .btn-package {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    padding: 12px 26px;
+    border-radius: 3px;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 8px 24px var(--orange-glow);
+    position: relative;
+    animation: packagePulse 2.4s ease-in-out infinite;
+    transition: transform 0.25s ease;
+  }
+  .btn-package:hover { transform: translateY(-2px); }
+  .btn-package-icon {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .btn-package-copy { display: flex; flex-direction: column; line-height: 1.3; text-align: left; }
+  .btn-package-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+  }
+  .btn-package-rotator {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 700;
+    display: inline-block;
+    white-space: nowrap;
+    min-width: 210px;
+  }
+  .btn-package-rotator.fade-in { animation: packageRotatorFade 0.4s ease; }
+  @keyframes packageRotatorFade {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes packagePulse {
+    0%, 100% { box-shadow: 0 8px 24px var(--orange-glow); }
+    50% { box-shadow: 0 10px 34px rgba(234,108,24,0.55); }
+  }
 
   /* ============ BLUEPRINT GRID BACKDROP ============ */
   .blueprint-bg {
@@ -124,10 +174,11 @@
   .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
-    background: rgba(20,20,20,0.92);
+    background: rgba(243,241,236,0.96);
     backdrop-filter: blur(12px);
     z-index: 1000;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-dark);
+    box-shadow: 0 2px 16px rgba(35,34,33,0.06);
   }
   .nav-container {
     max-width: 1200px;
@@ -140,9 +191,9 @@
   .logo { display: flex; align-items: center; gap: 12px; }
   .logo img { height: 52px; width: auto; display: block; }
   .logo-text {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Poppins', sans-serif; font-weight: 800;
     font-size: 1.05rem;
-    color: #fff;
+    color: var(--ink);
     line-height: 1.2;
   }
   .logo-text small {
@@ -156,7 +207,7 @@
   }
   .nav-links { display: flex; list-style: none; gap: 34px; align-items: center; }
   .nav-links a {
-    color: rgba(255,255,255,0.85);
+    color: var(--ink);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.93rem;
@@ -172,7 +223,7 @@
   }
   .nav-cta:hover { background: var(--orange-dark); color: #fff !important; }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
-  .hamburger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
+  .hamburger span { width: 25px; height: 2px; background: var(--ink); transition: 0.3s; }
   .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
   .hamburger.active span:nth-child(2) { opacity: 0; }
   .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
@@ -185,10 +236,10 @@
       align-items: flex-start;
       position: absolute;
       top: 100%; left: 0; right: 0;
-      background: rgba(15,15,15,0.98);
+      background: rgba(243,241,236,0.98);
       padding: 24px;
       gap: 18px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border-dark);
     }
     .nav-links.active { display: flex; }
     .nav-cta { margin-top: 4px; }
@@ -212,6 +263,7 @@
     object-fit: cover;
     z-index: 0;
     pointer-events: none;
+    filter: brightness(1.1) contrast(1.18) saturate(1.28);
   }
   .hero-video-overlay {
     position: absolute; inset: 0;
@@ -228,16 +280,6 @@
     z-index: 1;
     pointer-events: none;
   }
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 46%; height: 100%;
-    background: linear-gradient(180deg, transparent, rgba(234,108,24,0.10));
-    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
-    pointer-events: none;
-    z-index: 1;
-  }
   .hero-grid {
     display: block;
     max-width: 1200px;
@@ -247,6 +289,7 @@
     z-index: 2;
   }
   .hero-copy { max-width: 680px; }
+  .hero-tags-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
   .hero-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
@@ -260,19 +303,42 @@
     gap: 8px;
     padding: 7px 16px;
     border-radius: 3px;
-    margin-bottom: 26px;
+    margin-bottom: 0;
+  }
+  .hero-tag-active {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    background: var(--orange);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 3px;
+    font-weight: 600;
+    box-shadow: 0 6px 18px var(--orange-glow);
   }
   .hero h1 {
     font-size: clamp(2.4rem, 5.4vw, 4.1rem);
     line-height: 1.06;
     color: #fff;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     text-shadow: 0 2px 18px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.6);
+    text-transform: uppercase;
   }
   .hero h1 .accent-underline {
     position: relative;
     color: var(--orange);
     white-space: nowrap;
+  }
+  .hero-subline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 22px;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.6);
   }
   .hero p.lead {
     color: rgba(255,255,255,0.88);
@@ -289,7 +355,7 @@
     gap: 34px;
   }
   .hero-stat .num {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Poppins', sans-serif; font-weight: 800;
     font-size: 2rem;
     color: #fff;
     text-shadow: 0 1px 10px rgba(0,0,0,0.6);
@@ -375,7 +441,7 @@
     display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
   }
   .av-brand-text {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Poppins', sans-serif; font-weight: 800;
     font-size: 0.82rem;
     color: #fff;
     line-height: 1.2;
@@ -395,7 +461,7 @@
     padding-left: 16px;
   }
   .av-tagline-words {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Poppins', sans-serif; font-weight: 800;
     font-size: 1.5rem;
     line-height: 1.25;
     color: #fff;
@@ -409,7 +475,7 @@
   }
   .av-quote {
     position: absolute; left: 26px; bottom: 140px; z-index: 2;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     font-size: 1.05rem;
     line-height: 1.5;
@@ -441,7 +507,7 @@
     box-shadow: 0 16px 34px rgba(234,108,24,0.4);
     text-align: center;
   }
-  .av-badge-num { font-family: 'Archivo Black', sans-serif; font-size: 1.9rem; line-height: 1; }
+  .av-badge-num { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.9rem; line-height: 1; }
   .av-badge-lbl {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.6rem;
@@ -492,6 +558,20 @@
     margin-bottom: 3px;
   }
   .ac-location-card p { color: #6a6862; font-size: 0.88rem; line-height: 1.5; }
+  .ac-location-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 5px 12px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 3px;
+  }
 
   .about-content h2.section-title { margin-bottom: 20px; }
   .about-content .body-p { color: #5c5a56; font-size: 1rem; line-height: 1.8; margin-bottom: 18px; }
@@ -563,7 +643,7 @@
     flex-shrink: 0;
   }
   .service-cell-v2 h3 {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Poppins', sans-serif; font-weight: 800;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.01em;
@@ -587,7 +667,7 @@
   }
   .flip-back .flip-back-label {
     position: relative; z-index: 2;
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Poppins', sans-serif; font-weight: 800;
     font-size: 0.98rem;
     text-transform: uppercase;
     letter-spacing: 0.01em;
@@ -606,7 +686,8 @@
   @media (max-width: 960px) { .services-grid-v2 { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .services-grid-v2 { grid-template-columns: 1fr; } .service-cell-v2 { min-height: 240px; } }
 
-  /* ============ PROCESS ============ */
+  /* ============ PROCESS / ROADMAP ============ */
+  .roadmap-rows { max-width: 1200px; margin: 0 auto; }
   .process-wrap {
     max-width: 1200px;
     margin: 0 auto;
@@ -618,33 +699,103 @@
   .process-wrap::before {
     content: '';
     position: absolute;
-    top: 27px; left: 6%; right: 6%;
-    height: 1px;
-    background: repeating-linear-gradient(90deg, var(--gray) 0 8px, transparent 8px 16px);
+    top: 20px; left: 6%; right: 6%;
+    height: 10px;
+    background-color: #3a3a3a;
+    background-image: repeating-linear-gradient(90deg, #fff 0 14px, transparent 14px 30px);
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: 100% 3px;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.18);
     z-index: 0;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.3s cubic-bezier(.45,0,.15,1);
   }
-  .process-step { position: relative; z-index: 1; padding: 0 18px; text-align: left; }
+  .process-wrap.in-view::before { clip-path: inset(0 0 0 0); }
+  .process-step { position: relative; z-index: 1; padding: 0 16px; text-align: left; display: flex; flex-direction: column; }
   .process-num {
-    width: 56px; height: 56px;
-    border-radius: 50%;
+    width: 46px; height: 46px;
     background: var(--concrete);
     border: 2px solid var(--orange);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Archivo Black', sans-serif;
+    margin-bottom: 28px;
+    box-shadow: 0 6px 14px rgba(35,34,33,0.12);
+    transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+  }
+  .process-num span {
+    transform: rotate(45deg);
+    font-family: 'Poppins', sans-serif; font-weight: 800;
     color: var(--orange);
-    font-size: 1.15rem;
-    margin-bottom: 22px;
+    font-size: 1rem;
+    transition: color 0.4s ease;
   }
-  .process-step h4 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; font-family: 'Work Sans', sans-serif; }
-  .process-step p { color: #6a6862; font-size: 0.93rem; line-height: 1.65; }
+  .process-wrap.in-view .process-step:nth-child(1) .process-num { transition-delay: .05s; }
+  .process-wrap.in-view .process-step:nth-child(2) .process-num { transition-delay: .3s; }
+  .process-wrap.in-view .process-step:nth-child(3) .process-num { transition-delay: .55s; }
+  .process-wrap.in-view .process-step:nth-child(4) .process-num { transition-delay: .8s; }
+  .process-wrap.in-view .process-step .process-num { background: var(--orange); box-shadow: 0 8px 20px var(--orange-glow); transform: rotate(-45deg) scale(1.1); }
+  .process-wrap.in-view .process-step .process-num span { color: #fff; }
+  .process-step .step-icon { color: var(--orange); font-size: 1.3rem; margin-bottom: 12px; }
+  .process-step h4 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; font-family: 'Inter', sans-serif; }
+  .process-step p { color: #6a6862; font-size: 0.93rem; line-height: 1.65; margin-bottom: 16px; }
+  .process-step-photo {
+    width: 100%;
+    height: 130px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 24px rgba(35,34,33,0.16);
+    border: 4px solid #fff;
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+  .step-tree { position: absolute; top: -20px; color: #7d9b5f; font-size: 1.35rem; z-index: 1; text-shadow: 0 3px 6px rgba(0,0,0,0.12); }
+
+  /* Curved road connector between the two roadmap rows (desktop) */
+  .roadmap-connector { position: relative; max-width: 1200px; margin: 6px auto 0; height: 96px; opacity: 0; transform: scaleY(0.85); transform-origin: top; transition: opacity 0.8s ease, transform 0.8s ease; }
+  .roadmap-connector.in-view { opacity: 1; transform: scaleY(1); }
+  .roadmap-connector svg { position: absolute; right: 9%; top: 0; width: 80px; height: 100%; overflow: visible; }
+  .roadmap-connector-road { fill: none; stroke: #3a3a3a; stroke-width: 10; stroke-linecap: round; filter: drop-shadow(0 4px 5px rgba(0,0,0,0.16)); }
+  .roadmap-connector-dash { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 9 13; }
+
   @media (max-width: 900px) {
-    .process-wrap { grid-template-columns: 1fr 1fr; gap: 40px 20px; }
+    .roadmap-rows { max-width: 480px; margin: 0 auto; padding: 0 8px; }
+    .process-wrap { display: contents; }
+    .process-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      column-gap: 18px;
+      padding: 0 0 32px 0;
+    }
+    .process-step::before {
+      content: '';
+      position: absolute;
+      left: 22px; top: 46px; bottom: 0;
+      width: 8px;
+      background-color: #3a3a3a;
+      background-image: repeating-linear-gradient(180deg, #fff 0 9px, transparent 9px 20px);
+      background-repeat: repeat-y;
+      background-position: center;
+      background-size: 3px 100%;
+      border-radius: 4px;
+      z-index: 0;
+    }
+    .process-step.is-last::before { display: none; }
     .process-wrap::before { display: none; }
-  }
-  @media (max-width: 540px) {
-    .process-wrap { grid-template-columns: 1fr; }
+    .process-num { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+    .process-step .step-icon,
+    .process-step h4,
+    .process-step p,
+    .process-step-photo { grid-column: 2; }
+    .process-step .step-icon { margin-top: -2px; }
+    .step-tree { display: none; }
+    .roadmap-connector { display: none; }
   }
 
   /* ============ WHY / STATS BAND ============ */
@@ -658,7 +809,7 @@
   }
   .why-card { text-align: left; }
   .why-card .num {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Poppins', sans-serif; font-weight: 800;
     font-size: 2.6rem;
     color: var(--ink);
     line-height: 1;
@@ -746,7 +897,7 @@
     border-radius: 3px;
     padding: 13px 14px;
     color: #fff;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
     outline: none;
     transition: border-color 0.25s;
@@ -762,9 +913,9 @@
 
   /* ============ FOOTER ============ */
   .footer {
-    background: #141414;
+    background: var(--concrete-2);
     padding: 56px 24px 22px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border-dark);
   }
   .footer-grid {
     display: grid;
@@ -774,9 +925,9 @@
     margin: 0 auto 40px;
   }
   .footer-brand .logo { margin-bottom: 16px; }
-  .footer-brand p { color: var(--text-faint); font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
+  .footer-brand p { color: rgba(35,34,33,0.6); font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
   .footer h4 {
-    color: #fff;
+    color: var(--ink);
     margin-bottom: 18px;
     font-size: 0.85rem;
     font-family: 'JetBrains Mono', monospace;
@@ -785,13 +936,13 @@
     font-weight: 500;
   }
   .footer ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-  .footer a { color: var(--text-soft); text-decoration: none; font-size: 0.92rem; transition: 0.25s; }
+  .footer a { color: rgba(35,34,33,0.72); text-decoration: none; font-size: 0.92rem; transition: 0.25s; }
   .footer a:hover { color: var(--orange); }
   .footer-bottom {
     text-align: center;
     padding-top: 22px;
-    border-top: 1px solid var(--border);
-    color: var(--text-faint);
+    border-top: 1px solid var(--border-dark);
+    color: rgba(35,34,33,0.55);
     font-size: 0.82rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -860,18 +1011,28 @@
 <!-- HERO -->
 <section class="hero blueprint-bg" id="home">
   <video class="hero-bg-video" autoplay muted loop playsinline preload="auto">
-    <source src="https://res.cloudinary.com/lfgnusmd/video/upload/v1786428672/Drone_flying_over_large_project_202608111140_itfqd7.mp4" type="video/mp4">
+    <source src="https://res.cloudinary.com/lfgnusmd/video/upload/q_auto:best,f_auto/v1789819406/End_video_before_drone_camera_20260919172956_processed_v58fpf.mp4" type="video/mp4">
   </video>
   <div class="hero-video-overlay"></div>
   <div class="hero-bottom-mask"></div>
   <div class="hero-grid">
     <div class="hero-copy">
-      <div class="hero-tag"><i class="fas fa-drafting-compass"></i> Chennai &amp; Tamil Nadu</div>
-      <h1 data-aos="fade-up">We Build Your Plans <span class="accent-underline">Into Reality</span></h1>
-      <p class="lead" data-aos="fade-up" data-aos-delay="100">Jeeva Jee Builders delivers residential, commercial and interior construction with honest planning, quality materials and on-site accountability — from the first sketch to the final handover.</p>
+      <div class="hero-tags-row">
+        <div class="hero-tag"><i class="fas fa-drafting-compass"></i> Serving All of Tamil Nadu</div>
+        <div class="hero-tag-active"><i class="fas fa-map-pin"></i> Current Projects: Chennai &amp; Vellore</div>
+      </div>
+      <h1 data-aos="fade-up">You Dream, <span class="accent-underline">We Build.</span></h1>
+      <div class="hero-subline" data-aos="fade-up" data-aos-delay="60">Architecture &middot; Construction &middot; Interior Design &middot; Turnkey Solutions</div>
+      <p class="lead" data-aos="fade-up" data-aos-delay="100">Jeeva Jee Builders is a modern powerhouse in architecture, construction, and interiors — shaping spaces that embody strength, functionality, and timeless elegance. From blueprint to completion, every project is handled with quality craftsmanship and reliable execution.</p>
       <div class="hero-actions" data-aos="fade-up" data-aos-delay="200">
         <a href="#contact" class="btn-primary"><i class="fas fa-file-signature"></i> Request a Free Quote</a>
-        <a href="https://wa.me/918973375262?text=Hello%2C%20I%27d%20like%20to%20discuss%20a%20construction%20project" target="_blank" class="btn-outline"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+        <a href="packages.html" class="btn-package">
+          <span class="btn-package-icon"><i class="fas fa-tags"></i></span>
+          <span class="btn-package-copy">
+            <span class="btn-package-label">Our Packages &middot; Click Here</span>
+            <span class="btn-package-rotator" id="packageRotator">Basic Package &mdash; &#8377;1,999/sq.ft</span>
+          </span>
+        </a>
       </div>
       <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
         <div class="hero-stat">
@@ -964,26 +1125,39 @@
     <div class="service-cell-v2">
       <div class="flip-card-inner">
         <div class="flip-face flip-front">
-          <div class="icon-badge-v2"><i class="fas fa-bolt"></i></div>
-          <h3>Electrical Systems</h3>
-          <p>Code-compliant wiring and load planning built for homes and commercial spaces alike.</p>
+          <div class="icon-badge-v2"><i class="fas fa-house"></i></div>
+          <h3>Individual House</h3>
+          <p>Independent homes designed and built end-to-end, tailored to your plot and family's needs.</p>
         </div>
-        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/dt97offnl/image/upload/v1784691844/Electrical_System_pyyd81.jpg')">
-          <div class="flip-back-icon"><i class="fas fa-bolt"></i></div>
-          <div class="flip-back-label">Electrical Systems</div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1789748223/Screenshot_2026-09-18_214516_jttvxx.png')">
+          <div class="flip-back-icon"><i class="fas fa-house"></i></div>
+          <div class="flip-back-label">Individual House</div>
         </div>
       </div>
     </div>
     <div class="service-cell-v2">
       <div class="flip-card-inner">
         <div class="flip-face flip-front">
-          <div class="icon-badge-v2"><i class="fas fa-faucet"></i></div>
-          <h3>Plumbing</h3>
-          <p>Durable plumbing design and installation built to handle years of daily use with minimal upkeep.</p>
+          <div class="icon-badge-v2"><i class="fas fa-hotel"></i></div>
+          <h3>Villa</h3>
+          <p>Premium villas with elevated design, quality finishes and thoughtful landscaping.</p>
         </div>
-        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/dt97offnl/image/upload/v1784691843/Plumbing_xuyryg.jpg')">
-          <div class="flip-back-icon"><i class="fas fa-faucet"></i></div>
-          <div class="flip-back-label">Plumbing</div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1789748457/DSC_07650_cbdeca8934_kn49dd.webp')">
+          <div class="flip-back-icon"><i class="fas fa-hotel"></i></div>
+          <div class="flip-back-label">Villa</div>
+        </div>
+      </div>
+    </div>
+    <div class="service-cell-v2">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="icon-badge-v2"><i class="fas fa-building"></i></div>
+          <h3>Apartment</h3>
+          <p>Multi-unit residential blocks built for durability, layout efficiency and resale value.</p>
+        </div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1789748457/exterior-view-of-condo-building-complex-with-trees-and-blue-sky-photo_cos6kn.jpg')">
+          <div class="flip-back-icon"><i class="fas fa-building"></i></div>
+          <div class="flip-back-label">Apartment</div>
         </div>
       </div>
     </div>
@@ -1023,15 +1197,11 @@
   </div>
 
   <div class="about-wrap">
-    <div class="about-visual" data-aos="fade-right" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1786377393/WhatsApp_Image_2026-08-06_at_5.38.43_PM_nsmjsr.jpg')">
+    <div class="about-visual" data-aos="fade-right" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1789820392/ChatGPT_Image_Sep_19_2026_05_49_29_PM_vv9lcr.png')">
       <div class="av-overlay"></div>
       <div class="av-brand">
         <div class="av-logo"><i class="fas fa-drafting-compass"></i></div>
         <div class="av-brand-text">JEEVA JEE<span>BUILDERS</span></div>
-      </div>
-      <div class="av-tagline">
-        <div class="av-tagline-words">PLANNING.<br>QUALITY.<br>TRUST.</div>
-        <div class="av-tagline-sub">WE BUILD WHAT WE PROMISE</div>
       </div>
       <div class="av-quote">Built on Trust,<br><em>Driven by Craft.</em></div>
       <div class="av-icons">
@@ -1048,7 +1218,7 @@
     <div class="about-content">
       <div class="ac-top-cards">
         <div class="ac-founder-card" data-aos="fade-up">
-          <img class="ac-founder-photo" src="https://res.cloudinary.com/lfgnusmd/image/upload/v1786377393/WhatsApp_Image_2026-08-06_at_5.38.43_PM_nsmjsr.jpg" alt="Jeeva Venkatesan, Founder of Jeeva Jee Builders" loading="lazy">
+          <img class="ac-founder-photo" src="https://res.cloudinary.com/lfgnusmd/image/upload/v1789820392/ChatGPT_Image_Sep_19_2026_05_49_29_PM_vv9lcr.png" alt="Jeeva Venkatesan, Founder of Jeeva Jee Builders" loading="lazy">
           <div>
             <div class="ac-founder-name">Jeeva Venkatesan</div>
             <div class="ac-founder-role">FOUNDER, JEEVA JEE BUILDERS</div>
@@ -1059,6 +1229,7 @@
           <div>
             <div class="ac-location-title">Across Tamil Nadu</div>
             <p>We take up residential, commercial and interior projects across Chennai and every major district in Tamil Nadu.</p>
+            <span class="ac-location-highlight"><i class="fas fa-map-pin"></i> Current Projects: Chennai &amp; Vellore</span>
           </div>
         </div>
       </div>
@@ -1070,32 +1241,82 @@
   </div>
 </section>
 
-<!-- PROCESS -->
+<!-- PROCESS / ROADMAP -->
 <section id="process">
   <div class="eyebrow" style="justify-content:center; max-width:1200px; margin-left:auto; margin-right:auto;">How We Work</div>
   <h2 class="section-title" style="text-align:center; max-width:1200px; margin-left:auto; margin-right:auto;">From First Call to <span>Handover Keys</span></h2>
-  <p class="section-subtitle" style="text-align:center; max-width:600px; margin-left:auto; margin-right:auto;">A straightforward process, followed the same way on every project.</p>
+  <p class="section-subtitle" style="text-align:center; max-width:600px; margin-left:auto; margin-right:auto;">A clear 8-step journey from your first idea to a finished space.</p>
 
-  <div class="process-wrap">
-    <div class="process-step" data-aos="fade-up">
-      <div class="process-num">01</div>
-      <h4>Consultation</h4>
-      <p>We visit your site, understand your requirement and budget, and discuss options.</p>
+  <div class="roadmap-rows">
+    <div class="process-wrap" data-roadmap-row>
+      <div class="process-step" data-aos="fade-up">
+        <span class="step-tree" style="left:38px;"><i class="fas fa-tree"></i></span>
+        <div class="process-num"><span>01</span></div>
+        <div class="step-icon"><i class="fas fa-people-arrows"></i></div>
+        <h4>Consultation</h4>
+        <p>We understand your requirements and budget, and discuss options.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/6285152/pexels-photo-6285152.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+        <div class="process-num"><span>02</span></div>
+        <div class="step-icon"><i class="fas fa-drafting-compass"></i></div>
+        <h4>Design &amp; Estimate</h4>
+        <p>Layout, material selection and an itemised cost estimate for your approval.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/8837511/pexels-photo-8837511.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+        <div class="process-num"><span>03</span></div>
+        <div class="step-icon"><i class="fas fa-layer-group"></i></div>
+        <h4>Material Selection</h4>
+        <p>Steel, cement, tiles and fittings finalised and sourced from trusted brands.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/33160441/pexels-photo-33160441.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+        <div class="process-num"><span>04</span></div>
+        <div class="step-icon"><i class="fas fa-building"></i></div>
+        <h4>Foundation &amp; Structure</h4>
+        <p>Excavation, footing and RCC structural work carried out to engineering standards.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/5505125/pexels-photo-5505125.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
     </div>
-    <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-      <div class="process-num">02</div>
-      <h4>Design &amp; Estimate</h4>
-      <p>Layout, material selection and an itemised cost estimate for your approval.</p>
+
+    <div class="roadmap-connector" data-roadmap-connector aria-hidden="true">
+      <svg viewBox="0 0 120 96" preserveAspectRatio="none">
+        <path class="roadmap-connector-road" d="M60,0 L60,8 C98,26 98,70 60,88 L60,96" />
+        <path class="roadmap-connector-dash" d="M60,0 L60,8 C98,26 98,70 60,88 L60,96" />
+      </svg>
     </div>
-    <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-      <div class="process-num">03</div>
-      <h4>Construction</h4>
-      <p>Work begins with regular site updates and quality checks at every stage.</p>
-    </div>
-    <div class="process-step" data-aos="fade-up" data-aos-delay="300">
-      <div class="process-num">04</div>
-      <h4>Handover</h4>
-      <p>Final walkthrough, snag fixes, and the keys handed over — on schedule.</p>
+
+    <div class="process-wrap" data-roadmap-row>
+      <div class="process-step" data-aos="fade-up">
+        <span class="step-tree" style="left:38px;"><i class="fas fa-tree"></i></span>
+        <div class="process-num"><span>05</span></div>
+        <div class="step-icon"><i class="fas fa-trowel-bricks"></i></div>
+        <h4>Wall Work &amp; Roofing</h4>
+        <p>Brickwork, plastering and roof slab completed with regular quality checks.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/4692281/pexels-photo-4692281.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+        <div class="process-num"><span>06</span></div>
+        <div class="step-icon"><i class="fas fa-bolt"></i></div>
+        <h4>Electrical &amp; Plumbing</h4>
+        <p>Wiring, piping and fittings installed in coordination with the finishing plan.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+        <div class="process-num"><span>07</span></div>
+        <div class="step-icon"><i class="fas fa-paint-roller"></i></div>
+        <h4>Finishing &amp; Interiors</h4>
+        <p>Flooring, painting doors, windows and interior finishing brought together.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/6588599/pexels-photo-6588599.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
+      <div class="process-step is-last" data-aos="fade-up" data-aos-delay="300">
+        <div class="process-num"><span>08</span></div>
+        <div class="step-icon"><i class="fas fa-house-circle-check"></i></div>
+        <h4>Handover</h4>
+        <p>Final walkthrough, snag fixes, and the keys handed over — on schedule.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/7641904/pexels-photo-7641904.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1139,7 +1360,7 @@
           <div class="ic"><i class="fas fa-phone"></i></div>
           <div>
             <div class="lbl">Call Us</div>
-            <a href="tel:+918973375262">+91 89733 75262</a> &nbsp;/&nbsp; <a href="tel:+918248061976">+91 82480 61976</a>
+            <a href="tel:+918973375262">+91 89733 75262</a>
           </div>
         </div>
         <div class="contact-info-item">
@@ -1225,7 +1446,6 @@
       <h4>Contact</h4>
       <ul>
         <li><a href="tel:+918973375262"><i class="fas fa-phone"></i>&nbsp; +91 89733 75262</a></li>
-        <li><a href="tel:+918248061976"><i class="fas fa-phone"></i>&nbsp; +91 82480 61976</a></li>
         <li><a href="https://wa.me/918973375262" target="_blank"><i class="fab fa-whatsapp"></i>&nbsp; WhatsApp Us</a></li>
         <li><a href="https://www.instagram.com/jeevajeebuilders?igsh=Mms2dWF3NW8xdG51" target="_blank"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
         <li><a href="https://www.facebook.com/share/1DifZhxp4t/" target="_blank"><i class="fab fa-facebook-f"></i>&nbsp; Facebook</a></li>
@@ -1252,6 +1472,48 @@
 <script>
   if (typeof AOS !== 'undefined') {
     AOS.init({ duration: 800, once: true });
+  }
+
+  // Hero background video — slowed slightly for a premium, cinematic feel
+  const heroVideo = document.querySelector('.hero-bg-video');
+  if (heroVideo) {
+    const setSlowPlayback = () => { heroVideo.playbackRate = 0.75; };
+    heroVideo.addEventListener('loadedmetadata', setSlowPlayback);
+    setSlowPlayback();
+  }
+
+  // Roadmap (Process section) — animate each row's connecting line in as it scrolls into view
+  // Hero "Packages" button — rotate through all 3 packages with price every 2 seconds
+  const packageRotator = document.getElementById('packageRotator');
+  if (packageRotator) {
+    const packageOptions = [
+      'Basic Package &mdash; &#8377;1,999/sq.ft',
+      'Standard Package &mdash; &#8377;2,199/sq.ft',
+      'Premium Package &mdash; &#8377;2,599/sq.ft'
+    ];
+    let packageIndex = 0;
+    setInterval(() => {
+      packageIndex = (packageIndex + 1) % packageOptions.length;
+      packageRotator.classList.remove('fade-in');
+      void packageRotator.offsetWidth;
+      packageRotator.innerHTML = packageOptions[packageIndex];
+      packageRotator.classList.add('fade-in');
+    }, 2000);
+  }
+
+  const roadmapRows = document.querySelectorAll('[data-roadmap-row], [data-roadmap-connector]');
+  if (roadmapRows.length && 'IntersectionObserver' in window) {
+    const roadmapObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          roadmapObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+    roadmapRows.forEach(row => roadmapObserver.observe(row));
+  } else {
+    roadmapRows.forEach(row => row.classList.add('in-view'));
   }
 
   document.getElementById('year').textContent = new Date().getFullYear();
