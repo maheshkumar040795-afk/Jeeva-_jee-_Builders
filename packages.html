@@ -81,22 +81,22 @@
 
   /* NAVBAR */
   .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(243,241,236,0.96); backdrop-filter: blur(12px); z-index: 1000; border-bottom: 1px solid var(--border-dark); box-shadow: 0 2px 16px rgba(35,34,33,0.06); }
-  .nav-container { max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; }
-  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-container { max-width: 1280px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
   .logo img { height: 52px; width: auto; display: block; }
-  .logo-text { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--ink); line-height: 1.2; }
-  .logo-text small { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--orange); font-weight: 500; margin-top: 2px; }
-  .nav-links { display: flex; list-style: none; gap: 34px; align-items: center; }
-  .nav-links a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 0.93rem; transition: color 0.3s; }
+  .logo-text { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--ink); line-height: 1.2; white-space: nowrap; }
+  .logo-text small { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; color: var(--orange); font-weight: 500; margin-top: 2px; white-space: nowrap; }
+  .nav-links { display: flex; list-style: none; gap: 19px; align-items: center; flex-wrap: nowrap; }
+  .nav-links a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 0.93rem; white-space: nowrap; transition: color 0.3s; }
   .nav-links a:hover, .nav-links a.active { color: var(--orange); }
   .nav-cta { background: var(--orange); color: #fff !important; padding: 10px 22px; border-radius: 3px; font-weight: 600; }
   .nav-cta:hover { background: var(--orange-dark); color: #fff !important; }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; flex-shrink: 0; }
   .hamburger span { width: 25px; height: 2px; background: var(--ink); transition: 0.3s; }
   .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
   .hamburger.active span:nth-child(2) { opacity: 0; }
   .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-  @media (max-width: 860px) {
+  @media (max-width: 1180px) {
     .hamburger { display: flex; }
     .nav-links { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: rgba(243,241,236,0.98); padding: 24px; gap: 18px; border-top: 1px solid var(--border-dark); }
     .nav-links.active { display: flex; }
@@ -286,9 +286,9 @@
       <li><a href="index.html#services">Services</a></li>
       <li><a href="packages.html" class="active">Packages</a></li>
       <li><a href="calculator.html">Cost Calculator</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
       <li><a href="index.html#contact">Contact</a></li>
       <li><a href="index.html#contact" class="nav-cta">Get a Quote</a></li>
     </ul>
@@ -720,8 +720,9 @@
         <li><a href="index.html#services">Services</a></li>
         <li><a href="packages.html">Packages</a></li>
         <li><a href="calculator.html">Cost Calculator</a></li>
-        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#process">Process</a></li>
         <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </div>
