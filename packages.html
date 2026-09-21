@@ -155,7 +155,7 @@
 
   /* PKG STACK / ACCORDION */
   .pkg-stack { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
-  .pkg-card { background: #fff; border: 1px solid var(--border-dark); border-radius: 8px; overflow: hidden; transition: box-shadow 0.25s; }
+  .pkg-card { background: #fff; border: 1px solid var(--border-dark); border-radius: 8px; overflow: hidden; transition: box-shadow 0.25s; scroll-margin-top: 100px; }
   .pkg-card.open { box-shadow: 0 16px 40px rgba(28,28,28,0.1); }
 
   .pkg-card-head {
@@ -285,6 +285,7 @@
       <li><a href="index.html#home">Home</a></li>
       <li><a href="index.html#services">Services</a></li>
       <li><a href="packages.html" class="active">Packages</a></li>
+      <li><a href="calculator.html">Cost Calculator</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#process">Process</a></li>
@@ -316,7 +317,7 @@
     <div class="pkg-stack" data-aos="fade-up">
 
       <!-- BASIC -->
-      <div class="pkg-card" data-pkg="basic">
+      <div class="pkg-card" id="basic" data-pkg="basic">
         <div class="pkg-card-head" onclick="toggleCard(this)">
           <div class="left">
             <div class="pkg-badge"><i class="fas fa-house"></i></div>
@@ -410,7 +411,7 @@
       </div>
 
       <!-- STANDARD -->
-      <div class="pkg-card" data-pkg="standard">
+      <div class="pkg-card" id="standard" data-pkg="standard">
         <div class="pkg-card-head" onclick="toggleCard(this)">
           <div class="left">
             <div class="pkg-badge"><i class="fas fa-building-columns"></i></div>
@@ -504,7 +505,7 @@
       </div>
 
       <!-- PREMIUM -->
-      <div class="pkg-card" data-pkg="premium">
+      <div class="pkg-card" id="premium" data-pkg="premium">
         <div class="pkg-card-head" onclick="toggleCard(this)">
           <div class="left">
             <div class="pkg-badge"><i class="fas fa-gem"></i></div>
@@ -660,7 +661,7 @@
           <div class="ic"><i class="fas fa-map-marker-alt"></i></div>
           <div>
             <div class="lbl">Location</div>
-            <span class="val">Tamil Nadu, India</span>
+            <span class="val">Chennai, Tamil Nadu, India</span>
           </div>
         </div>
       </div>
@@ -718,6 +719,7 @@
         <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#services">Services</a></li>
         <li><a href="packages.html">Packages</a></li>
+        <li><a href="calculator.html">Cost Calculator</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#contact">Contact</a></li>
@@ -766,26 +768,47 @@
     });
   });
 
-  function toggleCard(headEl) {
-    const card = headEl.closest('.pkg-card');
-    const body = card.querySelector('.pkg-card-body');
-    const isOpen = card.classList.contains('open');
-
+  function closeAllCards() {
     document.querySelectorAll('.pkg-card').forEach(c => {
       c.classList.remove('open');
       c.querySelector('.pkg-card-body').style.maxHeight = null;
     });
+  }
 
-    if (!isOpen) {
-      card.classList.add('open');
-      body.style.maxHeight = body.scrollHeight + 'px';
+  function openCard(card) {
+    if (!card) return;
+    closeAllCards();
+    card.classList.add('open');
+    const body = card.querySelector('.pkg-card-body');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+
+  function toggleCard(headEl) {
+    const card = headEl.closest('.pkg-card');
+    const isOpen = card.classList.contains('open');
+    closeAllCards();
+    if (!isOpen) openCard(card);
+  }
+
+  // Auto-expand the package matching the URL hash (e.g. packages.html#basic)
+  // so a card clicked on the homepage lands here already expanded.
+  function openPackageFromHash() {
+    const key = window.location.hash.replace('#', '');
+    if (!key) return;
+    const card = document.querySelector('.pkg-card[data-pkg="' + key + '"]');
+    if (card) {
+      openCard(card);
+      setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
     }
   }
 
+  window.addEventListener('DOMContentLoaded', openPackageFromHash);
+  window.addEventListener('hashchange', openPackageFromHash);
+
   window.addEventListener('resize', () => {
-    const openCard = document.querySelector('.pkg-card.open');
-    if (openCard) {
-      const body = openCard.querySelector('.pkg-card-body');
+    const openCardEl = document.querySelector('.pkg-card.open');
+    if (openCardEl) {
+      const body = openCardEl.querySelector('.pkg-card-body');
       body.style.maxHeight = body.scrollHeight + 'px';
     }
   });

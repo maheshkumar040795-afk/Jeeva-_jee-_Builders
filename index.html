@@ -114,32 +114,62 @@
     display: inline-flex;
     align-items: center;
     gap: 13px;
-    padding: 12px 26px;
+    padding: 11px 28px 11px 12px;
     border-radius: 3px;
     background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
     color: #fff;
     text-decoration: none;
     box-shadow: 0 8px 24px var(--orange-glow);
     position: relative;
+    overflow: hidden;
+    isolation: isolate;
     animation: packagePulse 2.4s ease-in-out infinite;
     transition: transform 0.25s ease;
   }
+  .btn-package::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -60%;
+    width: 45%; height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform: skewX(-20deg);
+    animation: calcShimmer 3.2s ease-in-out infinite;
+    animation-delay: 1.6s;
+    z-index: 1;
+  }
   .btn-package:hover { transform: translateY(-2px); }
   .btn-package-icon {
-    width: 34px; height: 34px;
+    position: relative;
+    z-index: 2;
+    width: 38px; height: 38px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.22);
+    border: 1.5px dashed rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.14);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
+    font-size: 1.02rem;
     flex-shrink: 0;
+    animation: calcIconSpin 7s linear infinite;
   }
-  .btn-package-copy { display: flex; flex-direction: column; line-height: 1.3; text-align: left; }
+  .btn-package-icon i { animation: calcIconSpin 7s linear infinite reverse; display: inline-block; }
+  .btn-package-copy { position: relative; z-index: 2; display: flex; flex-direction: column; line-height: 1.3; text-align: left; }
   .btn-package-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.64rem;
-    letter-spacing: 0.06em;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.85);
+  }
+  .btn-package-badge {
+    background: rgba(255,255,255,0.24);
+    color: #fff;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 1.5px 6px;
+    border-radius: 20px;
   }
   .btn-package-rotator {
     font-family: 'Inter', sans-serif;
@@ -158,6 +188,80 @@
     0%, 100% { box-shadow: 0 8px 24px var(--orange-glow); }
     50% { box-shadow: 0 10px 34px rgba(234,108,24,0.55); }
   }
+
+  /* ============ HERO — CALCULATOR CTA ============ */
+  .btn-calculator {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    padding: 11px 26px 11px 12px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(234,108,24,0.5);
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+  .btn-calculator::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -60%;
+    width: 45%; height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,0.22), transparent);
+    transform: skewX(-20deg);
+    animation: calcShimmer 3.2s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes calcShimmer {
+    0% { left: -60%; }
+    45%, 100% { left: 130%; }
+  }
+  .btn-calculator:hover {
+    transform: translateY(-2px);
+    border-color: var(--orange);
+    background: rgba(234,108,24,0.14);
+  }
+  .btn-calculator-icon {
+    position: relative;
+    z-index: 2;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(234,108,24,0.7);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.02rem;
+    color: var(--orange);
+    flex-shrink: 0;
+    animation: calcIconSpin 7s linear infinite;
+  }
+  .btn-calculator-icon i { animation: calcIconSpin 7s linear infinite reverse; display: inline-block; }
+  @keyframes calcIconSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .btn-calculator-copy { position: relative; z-index: 2; display: flex; flex-direction: column; line-height: 1.3; text-align: left; }
+  .btn-calculator-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .btn-calculator-badge {
+    background: var(--orange);
+    color: #fff;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 1.5px 6px;
+    border-radius: 20px;
+    animation: liveBlink 1.8s ease-in-out infinite;
+  }
+  .btn-calculator-title { font-family: 'Inter', sans-serif; font-size: 0.97rem; font-weight: 700; color: #fff; white-space: nowrap; }
 
   /* ============ BLUEPRINT GRID BACKDROP ============ */
   .blueprint-bg {
@@ -573,6 +677,139 @@
     border-radius: 3px;
   }
 
+  /* ============ ABOUT — PARTNER SPOTLIGHT ============ */
+  .ac-partners {
+    margin-top: 30px;
+    padding-top: 28px;
+    border-top: 1px dashed var(--border-dark);
+  }
+  .ac-partners-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange-dark);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .ac-partners-label i { color: var(--orange); font-size: 0.85rem; }
+
+  .partner-spotlight {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    background: linear-gradient(135deg, #fff 0%, var(--concrete-2) 100%);
+    border: 1px solid var(--border-dark);
+    border-radius: 14px;
+    padding: 30px 34px;
+    overflow: hidden;
+    box-shadow: 0 20px 44px rgba(28,28,28,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .partner-spotlight::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+  }
+  .partner-spotlight:hover {
+    transform: translateY(-5px);
+    border-color: var(--orange);
+    box-shadow: 0 28px 56px rgba(28,28,28,0.12);
+  }
+  .partner-spotlight-photo-wrap {
+    position: relative;
+    flex-shrink: 0;
+    width: 118px; height: 118px;
+  }
+  .partner-spotlight-photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(234,108,24,0.5);
+    animation: calcIconSpin 14s linear infinite;
+  }
+  .partner-spotlight-photo {
+    width: 118px; height: 118px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 15%;
+    border: 3px solid var(--orange);
+    box-shadow: 0 10px 26px rgba(234,108,24,0.3);
+  }
+  .partner-spotlight-info { flex: 1; min-width: 0; }
+  .partner-spotlight-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .partner-spotlight-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 1.55rem;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  .partner-spotlight-role {
+    color: #6a6862;
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+  }
+  .partner-businesses {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border-dark);
+  }
+  .partner-biz {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
+    padding: 9px 16px 9px 9px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .partner-biz:hover {
+    border-color: var(--orange);
+    box-shadow: 0 10px 22px rgba(28,28,28,0.08);
+    transform: translateY(-2px);
+  }
+  .partner-biz-logo {
+    width: 42px; height: 42px; flex-shrink: 0;
+    border-radius: 6px;
+    background: rgba(234,108,24,0.06);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .partner-biz-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .partner-biz-name { font-weight: 700; color: var(--ink); font-size: 0.9rem; line-height: 1.25; white-space: nowrap; }
+  .partner-biz-divider {
+    width: 1px; height: 30px;
+    background: var(--border-dark);
+    flex-shrink: 0;
+  }
+  @media (max-width: 640px) {
+    .partner-spotlight { flex-direction: column; text-align: center; padding: 30px 24px; }
+    .partner-businesses { flex-direction: column; align-items: stretch; }
+    .partner-biz-divider { display: none; }
+    .partner-biz { justify-content: center; }
+  }
+
   .about-content h2.section-title { margin-bottom: 20px; }
   .about-content .body-p { color: #5c5a56; font-size: 1rem; line-height: 1.8; margin-bottom: 18px; }
 
@@ -798,11 +1035,127 @@
     .roadmap-connector { display: none; }
   }
 
+  /* ============ PACKAGES (SHORT) ============ */
+  .packages-section { background: var(--charcoal); }
+  .packages-section .eyebrow { justify-content: center; max-width: 1200px; margin-left: auto; margin-right: auto; }
+  .packages-section .section-title { text-align: center; color: #fff; max-width: 1200px; margin-left: auto; margin-right: auto; }
+  .packages-section .section-subtitle { text-align: center; max-width: 640px; margin-left: auto; margin-right: auto; color: var(--text-soft); }
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .package-card {
+    display: block;
+    position: relative;
+    background: var(--charcoal-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 38px 30px 32px;
+    text-decoration: none;
+    color: #fff;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .package-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .package-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--orange);
+    box-shadow: 0 20px 44px rgba(0,0,0,0.35);
+  }
+  .package-card:hover::before { transform: scaleX(1); }
+  .package-card.featured {
+    background: var(--charcoal-3);
+    border-color: var(--orange);
+    transform: scale(1.04);
+  }
+  .package-card.featured::before { transform: scaleX(1); }
+  .package-badge {
+    position: absolute;
+    top: 18px; right: -34px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 38px;
+    transform: rotate(35deg);
+  }
+  .package-tier {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+  }
+  .package-price {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .package-price span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-soft);
+  }
+  .package-desc {
+    color: var(--text-soft);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+  .package-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .package-points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--text-soft);
+  }
+  .package-points li i { color: var(--orange); margin-top: 3px; font-size: 0.8rem; }
+  .package-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--orange);
+  }
+  .package-card:hover .package-cta { gap: 12px; }
+  .package-cta i { transition: transform 0.3s ease; }
+  .package-card:hover .package-cta i { transform: translateX(4px); }
+  @media (max-width: 960px) {
+    .packages-grid { grid-template-columns: 1fr; }
+    .package-card.featured { transform: none; }
+  }
+
   /* ============ WHY / STATS BAND ============ */
   .why-section { background: var(--concrete-2); }
   .why-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -816,10 +1169,31 @@
     margin-bottom: 10px;
   }
   .why-card .num span { color: var(--orange); }
+  .why-card .num i { font-size: 1.9rem; vertical-align: middle; }
   .why-card .lbl { font-weight: 600; margin-bottom: 6px; font-size: 1rem; }
   .why-card .desc { color: #6a6862; font-size: 0.9rem; line-height: 1.6; }
+  .why-card-live .num { color: var(--orange); display: inline-flex; align-items: center; gap: 10px; }
+  .why-card-live .num .num-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    background: var(--orange);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+    animation: liveBlink 1.8s ease-in-out infinite;
+  }
+  @keyframes liveBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+  @media (max-width: 1080px) {
+    .why-grid { grid-template-columns: repeat(3, 1fr); gap: 34px 26px; }
+  }
   @media (max-width: 780px) {
     .why-grid { grid-template-columns: 1fr 1fr; gap: 36px 24px; }
+  }
+  @media (max-width: 480px) {
+    .why-grid { grid-template-columns: 1fr; }
   }
 
   /* ============ CONTACT ============ */
@@ -996,9 +1370,10 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="packages.html">Packages</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="calculator.html">Cost Calculator</a></li>
       <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
     </ul>
@@ -1010,7 +1385,9 @@
 
 <!-- HERO -->
 <section class="hero blueprint-bg" id="home">
-  <img class="hero-bg-video" src="https://res.cloudinary.com/lfgnusmd/image/upload/v1786433690/2025-03-14_1_uf9dxp.webp" alt="" loading="eager">
+  <video class="hero-bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://res.cloudinary.com/lfgnusmd/video/upload/v1789819406/End_video_before_drone_camera_20260919172956_processed_v58fpf.mp4" type="video/mp4">
+  </video>
   <div class="hero-video-overlay"></div>
   <div class="hero-bottom-mask"></div>
   <div class="hero-grid">
@@ -1027,8 +1404,15 @@
         <a href="packages.html" class="btn-package">
           <span class="btn-package-icon"><i class="fas fa-tags"></i></span>
           <span class="btn-package-copy">
-            <span class="btn-package-label">Our Packages &middot; Click Here</span>
+            <span class="btn-package-label">Our Packages <span class="btn-package-badge">3 PLANS</span></span>
             <span class="btn-package-rotator" id="packageRotator">Basic Package &mdash; &#8377;1,999/sq.ft</span>
+          </span>
+        </a>
+        <a href="calculator.html" class="btn-calculator">
+          <span class="btn-calculator-icon"><i class="fas fa-calculator"></i></span>
+          <span class="btn-calculator-copy">
+            <span class="btn-calculator-label">Free Tool <span class="btn-calculator-badge">NEW</span></span>
+            <span class="btn-calculator-title">Construction Cost Calculator</span>
           </span>
         </a>
       </div>
@@ -1081,6 +1465,19 @@
   <p class="section-subtitle" style="text-align:center; max-width:640px; margin-left:auto; margin-right:auto;">From the foundation to the final coat of paint, we handle every stage under one roof.</p>
 
   <div class="services-grid-v2" data-aos="fade-up">
+    <div class="service-cell-v2">
+      <div class="flip-card-inner">
+        <div class="flip-face flip-front">
+          <div class="icon-badge-v2"><i class="fas fa-comments"></i></div>
+          <h3>Consulting</h3>
+          <p>Straight-talk guidance on approvals, budgeting and execution strategy before you commit to build.</p>
+        </div>
+        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/dt97offnl/image/upload/v1784691843/Consulting_fcpjaa.jpg')">
+          <div class="flip-back-icon"><i class="fas fa-comments"></i></div>
+          <div class="flip-back-label">Consulting</div>
+        </div>
+      </div>
+    </div>
     <div class="service-cell-v2">
       <div class="flip-card-inner">
         <div class="flip-face flip-front">
@@ -1172,17 +1569,128 @@
         </div>
       </div>
     </div>
-    <div class="service-cell-v2">
-      <div class="flip-card-inner">
-        <div class="flip-face flip-front">
-          <div class="icon-badge-v2"><i class="fas fa-comments"></i></div>
-          <h3>Consulting</h3>
-          <p>Straight-talk guidance on approvals, budgeting and execution strategy before you commit to build.</p>
-        </div>
-        <div class="flip-face flip-back" style="background-image:url('https://res.cloudinary.com/dt97offnl/image/upload/v1784691843/Consulting_fcpjaa.jpg')">
-          <div class="flip-back-icon"><i class="fas fa-comments"></i></div>
-          <div class="flip-back-label">Consulting</div>
-        </div>
+  </div>
+</section>
+
+<!-- PACKAGES (SHORT) -->
+<section class="packages-section" id="packages">
+  <div class="eyebrow"><i class="fas fa-tags"></i> Pricing</div>
+  <h2 class="section-title">Simple Packages, <span>Clear Pricing</span></h2>
+  <p class="section-subtitle">Pick a starting point — every package can be tailored to your plot and needs. Tap a card to see the full breakdown.</p>
+
+  <div class="packages-grid" data-aos="fade-up">
+    <a href="packages.html#basic" class="package-card">
+      <div class="package-tier">Basic</div>
+      <div class="package-price">&#8377;1,999<span>/sq.ft</span></div>
+      <p class="package-desc">A solid, no-surprises build with quality materials and dependable execution.</p>
+      <ul class="package-points">
+        <li><i class="fas fa-check"></i> Standard structural design</li>
+        <li><i class="fas fa-check"></i> Branded core materials</li>
+        <li><i class="fas fa-check"></i> Basic electrical &amp; plumbing fit-out</li>
+      </ul>
+      <span class="package-cta">View Details <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="packages.html#standard" class="package-card featured">
+      <div class="package-badge">Popular</div>
+      <div class="package-tier">Standard</div>
+      <div class="package-price">&#8377;2,199<span>/sq.ft</span></div>
+      <p class="package-desc">Our most-chosen package — upgraded finishes with better design flexibility.</p>
+      <ul class="package-points">
+        <li><i class="fas fa-check"></i> Custom architectural design</li>
+        <li><i class="fas fa-check"></i> Premium branded materials</li>
+        <li><i class="fas fa-check"></i> Modular kitchen &amp; wardrobe provision</li>
+      </ul>
+      <span class="package-cta">View Details <i class="fas fa-arrow-right"></i></span>
+    </a>
+    <a href="packages.html#premium" class="package-card">
+      <div class="package-tier">Premium</div>
+      <div class="package-price">&#8377;2,599<span>/sq.ft</span></div>
+      <p class="package-desc">Elevated design and top-tier finishes for a truly premium build.</p>
+      <ul class="package-points">
+        <li><i class="fas fa-check"></i> Bespoke design &amp; 3D visualisation</li>
+        <li><i class="fas fa-check"></i> Top-tier fittings &amp; finishes</li>
+        <li><i class="fas fa-check"></i> Full interior &amp; landscaping package</li>
+      </ul>
+      <span class="package-cta">View Details <i class="fas fa-arrow-right"></i></span>
+    </a>
+  </div>
+</section>
+
+<!-- PROCESS / ROADMAP -->
+<section id="process">
+  <div class="eyebrow" style="justify-content:center; max-width:1200px; margin-left:auto; margin-right:auto;">How We Work</div>
+  <h2 class="section-title" style="text-align:center; max-width:1200px; margin-left:auto; margin-right:auto;">From First Call to <span>Handover Keys</span></h2>
+  <p class="section-subtitle" style="text-align:center; max-width:600px; margin-left:auto; margin-right:auto;">A clear 8-step journey from your first idea to a finished space.</p>
+
+  <div class="roadmap-rows">
+    <div class="process-wrap" data-roadmap-row>
+      <div class="process-step" data-aos="fade-up">
+        <span class="step-tree" style="left:38px;"><i class="fas fa-tree"></i></span>
+        <div class="process-num"><span>01</span></div>
+        <div class="step-icon"><i class="fas fa-people-arrows"></i></div>
+        <h4>Consultation</h4>
+        <p>We understand your requirements and budget, and discuss options.</p>
+        <div class="process-step-photo" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1789975796/ChatGPT_Image_Sep_21_2026_12_59_34_PM_srvwqe.png')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+        <div class="process-num"><span>02</span></div>
+        <div class="step-icon"><i class="fas fa-drafting-compass"></i></div>
+        <h4>Design &amp; Estimate</h4>
+        <p>Layout, material selection and an itemised cost estimate for your approval.</p>
+        <div class="process-step-photo" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1789989175/ChatGPT_Image_Sep_21_2026_01_36_28_PM_ednv6e.png')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+        <div class="process-num"><span>03</span></div>
+        <div class="step-icon"><i class="fas fa-layer-group"></i></div>
+        <h4>Material Selection</h4>
+        <p>Steel, cement, tiles and fittings finalised and sourced from trusted brands.</p>
+        <div class="process-step-photo" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1789989176/ChatGPT_Image_Sep_21_2026_04_40_00_PM_xp4b61.png')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+        <div class="process-num"><span>04</span></div>
+        <div class="step-icon"><i class="fas fa-building"></i></div>
+        <h4>Foundation &amp; Structure</h4>
+        <p>Excavation, footing and RCC structural work carried out to engineering standards.</p>
+        <div class="process-step-photo" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1789989680/Foundation_and_Structure_tbsjgz.jpg')"></div>
+      </div>
+    </div>
+
+    <div class="roadmap-connector" data-roadmap-connector aria-hidden="true">
+      <svg viewBox="0 0 120 96" preserveAspectRatio="none">
+        <path class="roadmap-connector-road" d="M60,0 L60,8 C98,26 98,70 60,88 L60,96" />
+        <path class="roadmap-connector-dash" d="M60,0 L60,8 C98,26 98,70 60,88 L60,96" />
+      </svg>
+    </div>
+
+    <div class="process-wrap" data-roadmap-row>
+      <div class="process-step" data-aos="fade-up">
+        <span class="step-tree" style="left:38px;"><i class="fas fa-tree"></i></span>
+        <div class="process-num"><span>05</span></div>
+        <div class="step-icon"><i class="fas fa-trowel-bricks"></i></div>
+        <h4>Wall Work &amp; Roofing</h4>
+        <p>Brickwork, plastering and roof slab completed with regular quality checks.</p>
+        <div class="process-step-photo" style="background-image:url('https://res.cloudinary.com/lfgnusmd/image/upload/v1789989682/ChatGPT_Image_Sep_21_2026_04_51_00_PM_rotakk.png')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+        <div class="process-num"><span>06</span></div>
+        <div class="step-icon"><i class="fas fa-bolt"></i></div>
+        <h4>Electrical &amp; Plumbing</h4>
+        <p>Wiring, piping and fittings installed in coordination with the finishing plan.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
+      <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+        <div class="process-num"><span>07</span></div>
+        <div class="step-icon"><i class="fas fa-paint-roller"></i></div>
+        <h4>Finishing &amp; Interiors</h4>
+        <p>Flooring, painting doors, windows and interior finishing brought together.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/6588599/pexels-photo-6588599.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      </div>
+      <div class="process-step is-last" data-aos="fade-up" data-aos-delay="300">
+        <div class="process-num"><span>08</span></div>
+        <div class="step-icon"><i class="fas fa-house-circle-check"></i></div>
+        <h4>Handover</h4>
+        <p>Final walkthrough, snag fixes, and the keys handed over — on schedule.</p>
+        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/7641904/pexels-photo-7641904.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
       </div>
     </div>
   </div>
@@ -1235,85 +1743,30 @@
       <h2 class="section-title">Building Trust, <span>Brick by Brick</span></h2>
       <p class="body-p">Jeeva Jee Builders is a Tamil Nadu–based construction company handling everything from independent homes to commercial spaces and interior renovations — managed directly, site to site, by the founder himself.</p>
       <p class="body-p">Every project starts with a plan we can stand behind — the right materials, a realistic timeline, and pricing you understand before a single wall goes up. From foundation to final coat, we oversee every stage with itemised quotes and honest updates, so you always know where your budget is going.</p>
-    </div>
-  </div>
-</section>
 
-<!-- PROCESS / ROADMAP -->
-<section id="process">
-  <div class="eyebrow" style="justify-content:center; max-width:1200px; margin-left:auto; margin-right:auto;">How We Work</div>
-  <h2 class="section-title" style="text-align:center; max-width:1200px; margin-left:auto; margin-right:auto;">From First Call to <span>Handover Keys</span></h2>
-  <p class="section-subtitle" style="text-align:center; max-width:600px; margin-left:auto; margin-right:auto;">A clear 8-step journey from your first idea to a finished space.</p>
-
-  <div class="roadmap-rows">
-    <div class="process-wrap" data-roadmap-row>
-      <div class="process-step" data-aos="fade-up">
-        <span class="step-tree" style="left:38px;"><i class="fas fa-tree"></i></span>
-        <div class="process-num"><span>01</span></div>
-        <div class="step-icon"><i class="fas fa-people-arrows"></i></div>
-        <h4>Consultation</h4>
-        <p>We understand your requirements and budget, and discuss options.</p>
-        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/6285152/pexels-photo-6285152.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
-      </div>
-      <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-        <div class="process-num"><span>02</span></div>
-        <div class="step-icon"><i class="fas fa-drafting-compass"></i></div>
-        <h4>Design &amp; Estimate</h4>
-        <p>Layout, material selection and an itemised cost estimate for your approval.</p>
-        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/8837511/pexels-photo-8837511.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
-      </div>
-      <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-        <div class="process-num"><span>03</span></div>
-        <div class="step-icon"><i class="fas fa-layer-group"></i></div>
-        <h4>Material Selection</h4>
-        <p>Steel, cement, tiles and fittings finalised and sourced from trusted brands.</p>
-        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/33160441/pexels-photo-33160441.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
-      </div>
-      <div class="process-step" data-aos="fade-up" data-aos-delay="300">
-        <div class="process-num"><span>04</span></div>
-        <div class="step-icon"><i class="fas fa-building"></i></div>
-        <h4>Foundation &amp; Structure</h4>
-        <p>Excavation, footing and RCC structural work carried out to engineering standards.</p>
-        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/5505125/pexels-photo-5505125.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
-      </div>
-    </div>
-
-    <div class="roadmap-connector" data-roadmap-connector aria-hidden="true">
-      <svg viewBox="0 0 120 96" preserveAspectRatio="none">
-        <path class="roadmap-connector-road" d="M60,0 L60,8 C98,26 98,70 60,88 L60,96" />
-        <path class="roadmap-connector-dash" d="M60,0 L60,8 C98,26 98,70 60,88 L60,96" />
-      </svg>
-    </div>
-
-    <div class="process-wrap" data-roadmap-row>
-      <div class="process-step" data-aos="fade-up">
-        <span class="step-tree" style="left:38px;"><i class="fas fa-tree"></i></span>
-        <div class="process-num"><span>05</span></div>
-        <div class="step-icon"><i class="fas fa-trowel-bricks"></i></div>
-        <h4>Wall Work &amp; Roofing</h4>
-        <p>Brickwork, plastering and roof slab completed with regular quality checks.</p>
-        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/4692281/pexels-photo-4692281.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
-      </div>
-      <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-        <div class="process-num"><span>06</span></div>
-        <div class="step-icon"><i class="fas fa-bolt"></i></div>
-        <h4>Electrical &amp; Plumbing</h4>
-        <p>Wiring, piping and fittings installed in coordination with the finishing plan.</p>
-        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
-      </div>
-      <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-        <div class="process-num"><span>07</span></div>
-        <div class="step-icon"><i class="fas fa-paint-roller"></i></div>
-        <h4>Finishing &amp; Interiors</h4>
-        <p>Flooring, painting doors, windows and interior finishing brought together.</p>
-        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/6588599/pexels-photo-6588599.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
-      </div>
-      <div class="process-step is-last" data-aos="fade-up" data-aos-delay="300">
-        <div class="process-num"><span>08</span></div>
-        <div class="step-icon"><i class="fas fa-house-circle-check"></i></div>
-        <h4>Handover</h4>
-        <p>Final walkthrough, snag fixes, and the keys handed over — on schedule.</p>
-        <div class="process-step-photo" style="background-image:url('https://images.pexels.com/photos/7641904/pexels-photo-7641904.jpeg?auto=compress&cs=tinysrgb&w=800')"></div>
+      <div class="ac-partners" data-aos="fade-up">
+        <div class="ac-partners-label"><i class="fas fa-handshake"></i> Construction Partner</div>
+        <div class="partner-spotlight">
+          <div class="partner-spotlight-photo-wrap">
+            <img class="partner-spotlight-photo" src="https://res.cloudinary.com/lfgnusmd/image/upload/v1790003289/ChatGPT_Image_Sep_21_2026_08_34_55_PM_czrcfb.png" alt="Suriya, Founder of Twinsun Builders and Surya Constructions" loading="lazy">
+          </div>
+          <div class="partner-spotlight-info">
+            <div class="partner-spotlight-eyebrow">Founder &amp; Managing Partner</div>
+            <h3 class="partner-spotlight-name">Suriya</h3>
+            <p class="partner-spotlight-role">Alliance partner behind two trusted construction brands working alongside Jeeva Jee Builders.</p>
+            <div class="partner-businesses">
+              <div class="partner-biz">
+                <div class="partner-biz-logo"><img src="https://res.cloudinary.com/lfgnusmd/image/upload/v1789991804/file_000000003f9881fd8e28f5f8011a42bf_lkjrgs.png" alt="Twinsun Builders logo" loading="lazy"></div>
+                <span class="partner-biz-name">Twinsun Builders</span>
+              </div>
+              <div class="partner-biz-divider"></div>
+              <div class="partner-biz">
+                <div class="partner-biz-logo"><img src="https://res.cloudinary.com/lfgnusmd/image/upload/v1789991805/file_00000000a07081fdbb7653ecf085d796_vn61c4.png" alt="Surya Constructions logo" loading="lazy"></div>
+                <span class="partner-biz-name">Surya Constructions</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1341,6 +1794,11 @@
       <div class="num">24<span>/7</span></div>
       <div class="lbl">Site Reachability</div>
       <div class="desc">Call or WhatsApp Jeeva directly for any site query, anytime.</div>
+    </div>
+    <div class="why-card why-card-live" data-aos="fade-up" data-aos-delay="320">
+      <div class="num"><i class="fas fa-video"></i> 24<span class="num-tag">LIVE</span></div>
+      <div class="lbl">Live Site Camera</div>
+      <div class="desc">Watch your project come up in real time — round-the-clock camera access from wherever you are.</div>
     </div>
   </div>
 </section>
@@ -1372,7 +1830,7 @@
           <div class="ic"><i class="fas fa-map-marker-alt"></i></div>
           <div>
             <div class="lbl">Location</div>
-            <span class="val">Tamil Nadu, India</span>
+            <span class="val">Chennai, Tamil Nadu, India</span>
           </div>
         </div>
       </div>
@@ -1434,9 +1892,10 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="packages.html">Packages</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="calculator.html">Cost Calculator</a></li>
         <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -1470,6 +1929,14 @@
 <script>
   if (typeof AOS !== 'undefined') {
     AOS.init({ duration: 800, once: true });
+  }
+
+  // Hero background video — slowed slightly for a premium, cinematic feel
+  const heroVideo = document.querySelector('.hero-bg-video');
+  if (heroVideo) {
+    const setSlowPlayback = () => { heroVideo.playbackRate = 0.75; };
+    heroVideo.addEventListener('loadedmetadata', setSlowPlayback);
+    setSlowPlayback();
   }
 
   // Roadmap (Process section) — animate each row's connecting line in as it scrolls into view
