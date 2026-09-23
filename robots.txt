@@ -1,0 +1,6 @@
+# robots.txt for https://jeevajeebuilders.in
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+Sitemap: https://jeevajeebuilders.in/sitemap.xml
